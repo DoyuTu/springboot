@@ -12,8 +12,8 @@ public class Base {
         return "index";
     }
 
-    @RequestMapping("/t")
-    public void t(){
+    @RequestMapping("/")
+    public void exception(){
         throw new MyException("异常啦");
     }
 }

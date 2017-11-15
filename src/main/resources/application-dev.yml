@@ -4,3 +4,6 @@ spring:
   http:
     encoding:
       charset: UTF-8
+endpoints:
+  shutdown:
+    enabled: true

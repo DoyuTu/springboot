@@ -13,6 +13,7 @@
 
 	<modules>
 		<module>springboot-defaultexception</module>
+		<module>springboot-cache</module>
 	</modules>
 
 	<parent>
