@@ -6,7 +6,16 @@ public class ErrorInfo<T> {
     private String date;
     private boolean state = false;
     private Integer code;
+    private String msg;
     private T obj ;
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
 
     public String getDate() {
         return date;

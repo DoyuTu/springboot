@@ -15,14 +15,13 @@ public class DefaultException {
 
     private static final Logger logger = LoggerFactory.getLogger(DefaultException.class);
 
-
     @ExceptionHandler(value = {Exception.class})
     public ErrorInfo<String> exceptionHandler(HttpServletRequest req, Exception e){
         ErrorInfo<String> info = new ErrorInfo<>();
         info.setDate(DateFormatUtils.format(System.currentTimeMillis(), "yyyy-MM-dd HH:mm:ss"));
-        info.setDate(e.getMessage());
         if (e instanceof MyException) {
-
+            info.setCode(((MyException) e).getCodeEnum().getCode());
+            info.setMsg(((MyException) e).getMsg());
             return info;
         } else if (e instanceof RuntimeException){
 
@@ -32,9 +31,4 @@ public class DefaultException {
         }
     }
 
-    @RequestMapping("/t")
-    public void test(){
-        logger.info(this.getClass().getName() + "error");
-        throw new MyException("异常", ResultEnum.ERROR);
-    }
 }
