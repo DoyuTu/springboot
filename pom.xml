@@ -15,6 +15,7 @@
 		<module>springboot-defaultexception</module>
 		<module>springboot-cache</module>
 		<module>springboot-async</module>
+		<module>springboot-cloud-eureka</module>
 	</modules>
 
 	<parent>
