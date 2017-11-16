@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.doyutu</groupId>
-	<artifactId>springboot-cloud-eureka</artifactId>
+	<artifactId>springboot-cloud-eureka-client</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>springboot-cloud-eureka</name>
+	<name>springboot-cloud-eureka-client</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
@@ -40,7 +40,7 @@
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-eureka-server</artifactId>
+			<artifactId>spring-cloud-starter-eureka</artifactId>
 		</dependency>
 
 	</dependencies>

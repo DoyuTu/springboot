@@ -16,6 +16,7 @@
 		<module>springboot-cache</module>
 		<module>springboot-async</module>
 		<module>springboot-cloud-eureka</module>
+		<module>springboot-cloud-eureka-client</module>
 	</modules>
 
 	<parent>
@@ -49,6 +50,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
 			<scope>runtime</scope>
 		</dependency>
 		<!--<dependency>-->
@@ -72,12 +74,6 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>3.7</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>fastjson</artifactId>
-			<version>1.2.40</version>
 		</dependency>
 
 	</dependencies>
