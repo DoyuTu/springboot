@@ -9,3 +9,5 @@ eureka:
     register-with-eureka: false
   instance:
     hostname: localhost
+  server:
+    enable-self-preservation: false

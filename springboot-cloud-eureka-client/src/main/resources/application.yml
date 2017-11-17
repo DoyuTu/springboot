@@ -1,6 +1,6 @@
 server:
   port: 32001
-  address: 127.0.0.1
+#  address: 127.0.0.1
 spring:
   application:
     name: eureka-client
@@ -10,3 +10,8 @@ eureka:
       defaultZone: http://localhost:31001/eureka/
   instance:
     prefer-ip-address: true
+    #${spring.cloud.client.ipAddress}
+    instance-id: ${spring.cloud.client.ipAddress}
+    #腾讯云（VM）需要更改以下配置地址
+#    ip-address:
+#    non-secure-port:
