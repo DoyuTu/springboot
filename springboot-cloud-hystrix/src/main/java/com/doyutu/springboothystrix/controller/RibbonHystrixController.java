@@ -1,6 +1,6 @@
-package com.doyutu.springbootcloudribbon.controller;
+package com.doyutu.springboothystrix.controller;
 
-import com.doyutu.springbootcloudribbon.service.RibbonService;
+import com.doyutu.springboothystrix.service.RibbonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-public class RibbonController {
+public class RibbonHystrixController {
 
     @Autowired
     private LoadBalancerClient loadBalancerClient;
@@ -17,10 +17,10 @@ public class RibbonController {
     @Autowired
     private RibbonService ribbonService;
 
-    @GetMapping("/ribbon")
+    @GetMapping("/")
     public String ribbonController() {
         ServiceInstance serviceInstance = loadBalancerClient.choose("eureka-client");
-        String url = "http://" + serviceInstance.getServiceId() + "/dc";
+        String url = serviceInstance.getUri() + "/dc";
         System.out.println(url);
         return this.ribbonService.getService(url);
     }

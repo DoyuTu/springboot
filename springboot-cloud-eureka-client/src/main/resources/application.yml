@@ -10,7 +10,7 @@ eureka:
       defaultZone: http://localhost:31001/eureka/
   instance:
     prefer-ip-address: true
-    #${spring.cloud.client.ipAddress}
+#    ${spring.cloud.client.ipAddress}
     instance-id: ${spring.cloud.client.ipAddress}
     #腾讯云（VM）需要更改以下配置地址
 #    ip-address:

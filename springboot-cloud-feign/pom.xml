@@ -4,23 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.doyutu</groupId>
-	<artifactId>springboot</artifactId>
+	<artifactId>springboot-cloud-feign</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
+	<packaging>war</packaging>
 
-	<name>springboot</name>
+	<name>springboot-cloud-feign</name>
 	<description>Demo project for Spring Boot</description>
-
-	<modules>
-		<module>springboot-defaultexception</module>
-		<module>springboot-cache</module>
-		<module>springboot-async</module>
-		<module>springboot-cloud-eureka</module>
-		<module>springboot-cloud-eureka-client</module>
-		<module>springboot-cloud-ribbon</module>
-		<module>springboot-cloud-feign</module>
-		<module>springboot-cloud-hystrix</module>
-	</modules>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -33,29 +22,36 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<spring-cloud.version>Dalston.SR4</spring-cloud.version>
 	</properties>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>io.spring.platform</groupId>
-				<artifactId>platform-bom</artifactId>
-				<version>Brussels-SR5</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
 	<dependencies>
-		<!--监控运维-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-eureka</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-feign</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-hystrix</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+			<scope>runtime</scope>
 		</dependency>
 		<!--<dependency>-->
 			<!--<groupId>org.springframework.boot</groupId>-->
@@ -64,40 +60,22 @@
 		<!--</dependency>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<optional>true</optional>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
-		<!--SpringBoot Reload   ctrl + F9编译即可-->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>springloaded</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<!--<version>3.7</version>-->
-		</dependency>
-
-		<!--<dependency>-->
-			<!--<groupId>com.alibaba</groupId>-->
-			<!--<artifactId>fastjson</artifactId>-->
-			<!--<version>1.2.40</version>-->
-		<!--</dependency>-->
-
 	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<build>
 		<plugins>

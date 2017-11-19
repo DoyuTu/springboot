@@ -1,0 +1,15 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:31001/eureka/
+  instance:
+    prefer-ip-address: true
+    hostname: ${spring.cloud.client.ipAddress}
+#    ip-address:
+#    non-secure-port:
+server:
+  port: 35001
+#  address: 127.0.0.1
+spring:
+  application:
+    name: hystrix

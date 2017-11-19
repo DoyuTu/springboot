@@ -18,4 +18,10 @@ public class DcController {
         System.out.println(services);
         return services;
     }
+
+    @GetMapping("/fallback")
+     public String fallback(){
+        System.out.println("fallback");
+        throw new RuntimeException("fallback");
+    }
 }

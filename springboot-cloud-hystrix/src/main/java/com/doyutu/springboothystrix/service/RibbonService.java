@@ -1,5 +1,6 @@
-package com.doyutu.springbootcloudribbon.service;
+package com.doyutu.springboothystrix.service;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -11,13 +12,14 @@ public class RibbonService {
     @Autowired
     private RestTemplate restTemplate;
 
-    /**
-     *
-     * @param url 必须为ServiceID
-     * @return Response
-     */
+    @HystrixCommand(fallbackMethod = "fallback")
     public String getService(String url){
         return this.restTemplate.getForObject(url, String.class);
+    }
+
+    public String fallback(String url){
+        System.out.println(url + "：Ribbon异常回调");
+        return url;
     }
 
 }
