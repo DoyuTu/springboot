@@ -12,7 +12,7 @@ eureka:
     hostname: ${spring.cloud.client.ipAddress}
 
 # 当前版本Dalston.SR4默认关闭Feign Hystrix熔断机制，TMD(挺萌的)，呵呵呵，下面源码
-# {Link} https://github.com/spring-cloud/spring-cloud-netflix/blob/master/spring-cloud-netflix-core/src/main/java/org/springframework/cloud/netflix/feign/FeignClientsConfiguration.java
+# {Link}： https://github.com/spring-cloud/spring-cloud-netflix/blob/master/spring-cloud-netflix-core/src/main/java/org/springframework/cloud/netflix/feign/FeignClientsConfiguration.java
 feign:
   hystrix:
     enabled: true

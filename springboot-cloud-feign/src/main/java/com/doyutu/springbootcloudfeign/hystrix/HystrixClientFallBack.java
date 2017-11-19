@@ -10,7 +10,8 @@ public class HystrixClientFallBack implements FallbackFactory<FeignServer> {
     @Override
     public FeignServer create(Throwable e) {
         System.out.println(e.getMessage());
-        return new FeignServer() {
+        return new FeignServer(){
+
             @Override
             public String consume() {
                 return "consume fallback";

@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@FeignClient(name = "eureka-client", fallback = HystrixClientFallBack.class)
+@FeignClient(name = "eureka-client", fallbackFactory = HystrixClientFallBack.class)
 @Primary
 public interface FeignServer {
 
