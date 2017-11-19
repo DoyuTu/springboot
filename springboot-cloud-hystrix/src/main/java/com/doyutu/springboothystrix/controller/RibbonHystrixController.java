@@ -20,7 +20,7 @@ public class RibbonHystrixController {
     @GetMapping("/")
     public String ribbonController() {
         ServiceInstance serviceInstance = loadBalancerClient.choose("eureka-client");
-        String url = serviceInstance.getUri() + "/dc";
+        String url = "http://"+ serviceInstance.getServiceId() + "/dc";
         System.out.println(url);
         return this.ribbonService.getService(url);
     }
