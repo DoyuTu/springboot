@@ -21,6 +21,8 @@
 		<module>springboot-cloud-feign</module>
 		<module>springboot-cloud-hystrix</module>
 		<module>springboot-cloud-turbine</module>
+		<module>springboot-cloud-config-server</module>
+		<module>springboot-cloud-config-client</module>
 	</modules>
 
 	<parent>

@@ -1,0 +1,28 @@
+#bootstrap.yml文件中的内容不能放到application.yml中，否则config部分无法被加载，因为config部分的配置先于application.yml被加载，而bootstrap.yml中的配置会先于application.yml加载
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      uri: http://localhost:37001/
+#      /{label}/{application}-{profile}.yml
+#      /{label}/{application}-{profile}.properties
+#      文件名
+      name: config-server
+#      Branch分支
+      label: master
+#      profile
+      profile:
+
+#调用/refresh加载数据出现以下错误需关闭Security
+#{
+#    "timestamp": 1511190254649,
+#    "status": 401,
+#    "error": "Unauthorized",
+#    "message": "Full authentication is required to access this resource.",
+#    "path": "/refresh"
+#}
+management:
+  security:
+    enabled: false
+

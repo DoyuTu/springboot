@@ -1,0 +1,16 @@
+server:
+  port: 37001
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+#        http://localhost:37001/config-server.yml
+#        支持多种数据格式访问，如yml json properties 只需要添加如 .yml 即可自动转换
+          uri: https://github.com/DoyuTu/springboot
+          search-paths: config-repo
+#         因为是公有项目所以不需要配置用户名和密码
+          username:
+          password:
