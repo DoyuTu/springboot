@@ -11,8 +11,14 @@ eureka:
     prefer-ip-address: true
     hostname: ${spring.cloud.client.ipAddress}
 turbine:
-  combine-host-port: true
-  cluster-name-expression: new String("default")
 #  加入仪表盘的容器的serviceId，使用逗号","分割
 #  stream流API：http://localhost:36001/turbine.stream
   app-config: feign,hystrix
+  combine-host-port: true
+  cluster-name-expression: new String("default")
+#   cluster config 设置
+#   stream流API：http://localhost:36001/turbine.stream?cluster=MAIN
+# turbine:
+#   aggregator:
+#       clusterConfig: MAIN
+#   cluster-name-expression: metadata['cluster']

@@ -5,8 +5,11 @@ eureka:
   instance:
     prefer-ip-address: true
     hostname: ${spring.cloud.client.ipAddress}
-#    ip-address:
-#    non-secure-port:
+#    turbine cluster config 设置
+#  eureka:
+#    instance:
+#      metadata-map:
+#        cluster: MAIN
 server:
   port: 35001
 #  address: 127.0.0.1
