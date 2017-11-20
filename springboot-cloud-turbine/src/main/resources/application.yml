@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: turbine
+server:
+  port: 36001
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:31001/eureka/
+  instance:
+    prefer-ip-address: true
+    hostname: ${spring.cloud.client.ipAddress}
+turbine:
+  combine-host-port: true
+  cluster-name-expression: new String("default")
+#  加入仪表盘的容器的serviceId，使用逗号","分割
+#  stream流API：http://localhost:36001/turbine.stream
+  app-config: feign,hystrix
