@@ -1,0 +1,28 @@
+# 访问服务路径：http://{url}:{port}/{serviceId}/**
+# 如：http://localhost:39001/erurka-client/dc
+server:
+  port: 39001
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:31001/eureka/
+  instance:
+    prefer-ip-address: true
+    hostname: ${spring.cloud.client.ipAddress}
+spring:
+  application:
+    name: zuul
+# 自定义路径
+zuul:
+  routes:
+    # Zuul 唯一名称
+    user:
+    # 映射的路径
+      path: /**
+    # 不使用eureka自动发现，手动配置url，需要配置大量url，不推荐使用
+      url:
+    # 需要映射的serviceId
+    # 以上配置后访问路径：http://localhost:39001/dc 与 http://localhost:39001/erurka-client/dc 相同
+      service-id: eureka-client
+  # 需要忽略路由功能的serviceId
+  ignored-services:
