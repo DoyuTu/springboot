@@ -19,6 +19,8 @@ public class SpringScheduleTasks {
      *       秒 分 时 日 月 周
      *  ? 表示忽略
      *  * 表示所有
+     *  fixedRate = 3000  每三秒运行一次任务，无论前一次是否执行完成
+     *  fixedDelay = 3000 在前一次任务完成后三秒运行
      */
     @Scheduled(cron = "*/2 * * * * ?")
     public void reportTime() {
