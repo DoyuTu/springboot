@@ -1,4 +1,4 @@
-package com.doyutu.springboothystrix.service;
+package com.doyutu.springbootcloudhystrix.service;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;

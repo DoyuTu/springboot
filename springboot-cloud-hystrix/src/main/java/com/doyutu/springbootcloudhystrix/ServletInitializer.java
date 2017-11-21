@@ -1,4 +1,4 @@
-package com.doyutu.springboothystrix;
+package com.doyutu.springbootcloudhystrix;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;

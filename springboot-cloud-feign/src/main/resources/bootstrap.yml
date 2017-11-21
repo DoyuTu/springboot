@@ -1,0 +1,21 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:31001/eureka/
+  instance:
+    prefer-ip-address: true
+    hostname: ${spring.cloud.client.ipAddress}
+spring:
+  application:
+    name: feign
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config-server
+      name: config-client-eureka
+      label: master
+      profile:
+management:
+  security:
+    enabled: false

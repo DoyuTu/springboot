@@ -1,6 +1,6 @@
-package com.doyutu.springboothystrix.controller;
+package com.doyutu.springbootcloudhystrix.controller;
 
-import com.doyutu.springboothystrix.service.RibbonService;
+import com.doyutu.springbootcloudhystrix.service.RibbonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;

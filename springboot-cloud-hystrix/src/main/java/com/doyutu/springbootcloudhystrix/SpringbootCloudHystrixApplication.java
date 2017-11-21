@@ -1,4 +1,4 @@
-package com.doyutu.springboothystrix;
+package com.doyutu.springbootcloudhystrix;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

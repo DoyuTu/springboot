@@ -1,5 +1,12 @@
 server:
   port: 37001
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:31001/eureka/
+  instance:
+    prefer-ip-address: true
+    hostname: ${spring.cloud.client.ipAddress}
 spring:
   application:
     name: config-server
@@ -7,10 +14,11 @@ spring:
     config:
       server:
         git:
+#        æ”¯æŒGIT SVN æœ¬åœ°ç­‰å¤šç§æ•°æ®æº
 #        http://localhost:37001/config-server.yml
-#        Ö§³Ö¶àÖÖÊı¾İ¸ñÊ½·ÃÎÊ£¬Èçyml json properties Ö»ĞèÒªÌí¼ÓÈç .yml ¼´¿É×Ô¶¯×ª»»
+#        æ”¯æŒå¤šç§æ•°æ®æ ¼å¼è®¿é—®ï¼Œå¦‚yml json properties åªéœ€è¦æ·»åŠ å¦‚ .yml å³å¯è‡ªåŠ¨è½¬æ¢
           uri: https://github.com/DoyuTu/springboot
           search-paths: config-repo
-#         ÒòÎªÊÇ¹«ÓĞÏîÄ¿ËùÒÔ²»ĞèÒªÅäÖÃÓÃ»§ÃûºÍÃÜÂë
+#         å› ä¸ºæ˜¯å…¬æœ‰é¡¹ç›®æ‰€ä»¥ä¸éœ€è¦é…ç½®ç”¨æˆ·åå’Œå¯†ç 
           username:
           password:
