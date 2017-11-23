@@ -38,14 +38,14 @@ public class MailTest extends SpringbootMailApplicationTests{
 
     @Test
     public void sendAttachmentsMail(){
-        MimeMessage message = null;
+        MimeMessage message = mailSender.createMimeMessage();
         try {
-            message = mailSender.createMimeMessage();
+            //开启多组件上传功能
             MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(message, true, "UTF-8");
             mimeMessageHelper.setFrom(from);
             mimeMessageHelper.setTo(to);
             mimeMessageHelper.setSubject("附件邮件");
-            StringBuilder sb = new StringBuilder("<h1>我是带<p style='color:red;'>颜色</p>的邮件：</h1>")
+            StringBuilder sb = new StringBuilder("<h2>我是带<p style='color:red;'>颜色</p>的邮件：</h2>")
                     //添加嵌入图片时必须的HTML格式 src中的'cid:xxx' ，xxx必须对应Inline文件的文件名
                     .append("<body><img src='cid:inner.png' /></body>");
             //开启html支持
