@@ -30,9 +30,9 @@ public class SpringScheduleTasks {
     }
 
     /**
-     * 每小时的第1、3、4、5、6分钟，从第30秒开始，每两秒运行一次
+     * 启动后延迟3秒执行，然后以每小时的第1、3、4、5、6分钟，从第30秒开始，每两秒运行一次
      */
-    @Scheduled(cron = "30/2 1,3,4-6 * * * ?")
+    @Scheduled(initialDelay = 3000L, cron = "30/2 1,3,4-6 * * * ?")
     public void reportTime2() {
         if (log.isInfoEnabled()) {
             log.info("cron2 :" + DateFormatUtils.format(System.currentTimeMillis(), "yyyy-MM-dd HH:mm:ss"));
