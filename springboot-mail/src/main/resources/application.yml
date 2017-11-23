@@ -1,0 +1,19 @@
+server:
+  port: 8081
+spring:
+  mail:
+    default-encoding: UTF-8
+    host: smtp.163.com
+#    支持的协议：比如163 支持 smtp,pop3,imap
+    protocol: smtp
+#    支持协议的端口，包括SSL和非SSL
+    port: 25
+    username: xxxx
+    password: xxx
+
+    test-connection: false
+    properties:
+      mail:
+        smtp:
+#        必须密码登录
+          auth: true
