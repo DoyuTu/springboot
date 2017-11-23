@@ -1,15 +1,25 @@
 package com.doyutu.springbootschedule.quartz;
 
+import org.apache.commons.lang3.time.DateFormatUtils;
+import org.quartz.Job;
+import org.quartz.JobExecutionContext;
+import org.quartz.JobExecutionException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class QuartzScheduleTasks {
+import java.text.MessageFormat;
+
+public class QuartzScheduleTasks implements Job{
 
     private static final Logger log = LoggerFactory.getLogger(QuartzScheduleTasks.class);
 
-    public void quartzTask() {
+    @Override
+    public void execute(JobExecutionContext context) throws JobExecutionException {
+        String message = MessageFormat.format("Quartz:{1}", DateFormatUtils.format(System.currentTimeMillis(), "HH:mm:ss"));
         if (log.isInfoEnabled()) {
-            log.info("Quartz start");
+            log.info(message);
+        } else {
+            System.out.println(message);
         }
     }
 }
