@@ -15,7 +15,7 @@ public class QuartzScheduleTasks implements Job{
 
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
-        String message = MessageFormat.format("Quartz:{1}", DateFormatUtils.format(System.currentTimeMillis(), "HH:mm:ss"));
+        String message = MessageFormat.format("Quartz:{0}", DateFormatUtils.format(System.currentTimeMillis(), "HH:mm:ss.SSS"));
         if (log.isInfoEnabled()) {
             log.info(message);
         } else {
