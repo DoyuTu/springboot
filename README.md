@@ -8,7 +8,17 @@
 | JDK | 1.8 |
 | IDE | IntelliJ IDEA 2017.2.6 |
 | Maven | 3.3.9 |
-## spring-cloud微服务模组功能简介
+
+###普通模组
+| 模组名 | 功能或描述 |
+|-----|-----|
+| springboot-async | SpringAsync & SpringAsyncRestTemplate |
+| springboot-cache | SpringCache & Caffeine |
+| springboot-defaultexception | 统一异常处理 & 定制错误页 |
+| springboot-schedule | SpringSchedule & Quartz简单使用 |
+| springboot-mail | SpringMail |
+
+### spring-cloud微服务模组功能简介
 | 模组名 | serviceId | port  | 功能或描述 |
 | ---- | ---- | ---- | ---- |
 | springboot-cloud-eureka | eureka  | 31001  | 服务发现 |
