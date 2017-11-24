@@ -24,6 +24,8 @@
 		<module>springboot-cloud-config-server</module>
 		<module>springboot-cloud-config-client</module>
 		<module>springboot-cloud-zuul</module>
+		<module>springboot-schedule</module>
+		<module>springboot-mail</module>
 	</modules>
 
 	<parent>
