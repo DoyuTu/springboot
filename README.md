@@ -12,6 +12,7 @@
 ### 普通模组
 | 模组名 | 功能或描述 |
 |-------|-------|
+| springboot | 除SpringCloud模组外的父模组，有模块共用的依赖和LogBack |
 | springboot-async | SpringAsync & SpringAsyncRestTemplate |
 | springboot-cache | SpringCache & Caffeine |
 | springboot-defaultexception | 统一异常处理 & 定制错误页 |
