@@ -26,10 +26,25 @@
 
 	<dependencies>
 
+		<!--官方自带UI http://localhost:8081/swagger-ui.html-->
+		<!--<dependency>-->
+			<!--<groupId>io.springfox</groupId>-->
+			<!--<artifactId>springfox-swagger-ui</artifactId>-->
+			<!--<version>2.7.0</version>-->
+		<!--</dependency>-->
+
+		<!--bootstrap-ui http://localhost:8081/doc.html-->
+		<!--<dependency>-->
+			<!--<groupId>com.github.xiaoymin</groupId>-->
+			<!--<artifactId>swagger-bootstrap-ui</artifactId>-->
+			<!--<version>1.6</version>-->
+		<!--</dependency>-->
+
+		<!--layer-ui http://localhost:8081/docs.html-->
 		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger-ui</artifactId>
-			<version>2.7.0</version>
+			<groupId>com.github.caspar-chen</groupId>
+			<artifactId>swagger-ui-layer</artifactId>
+			<version>0.0.3</version>
 		</dependency>
 
 		<dependency>
