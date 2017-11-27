@@ -34,18 +34,19 @@
 		<!--</dependency>-->
 
 		<!--bootstrap-ui http://localhost:8081/doc.html-->
-		<!--<dependency>-->
-			<!--<groupId>com.github.xiaoymin</groupId>-->
-			<!--<artifactId>swagger-bootstrap-ui</artifactId>-->
-			<!--<version>1.6</version>-->
-		<!--</dependency>-->
+		<dependency>
+			<groupId>com.github.xiaoymin</groupId>
+			<artifactId>swagger-bootstrap-ui</artifactId>
+			<version>1.6</version>
+		</dependency>
 
 		<!--layer-ui http://localhost:8081/docs.html-->
-		<dependency>
-			<groupId>com.github.caspar-chen</groupId>
-			<artifactId>swagger-ui-layer</artifactId>
-			<version>0.0.3</version>
-		</dependency>
+		<!--个人测试除了0.0.1，其他版本均有不同程度bug，包括0.0.3-->
+		<!--<dependency>-->
+			<!--<groupId>com.github.caspar-chen</groupId>-->
+			<!--<artifactId>swagger-ui-layer</artifactId>-->
+			<!--<version>0.0.1</version>-->
+		<!--</dependency>-->
 
 		<dependency>
 			<groupId>io.springfox</groupId>

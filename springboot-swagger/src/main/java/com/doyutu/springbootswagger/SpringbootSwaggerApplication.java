@@ -23,6 +23,7 @@ public class SpringbootSwaggerApplication {
 				//请求头路径
 				.pathMapping("/")
 				.select()
+				//swagger注解扫描api路径
 				.apis(RequestHandlerSelectors.basePackage("com.doyutu.springbootswagger.controller"))
 				.paths(PathSelectors.any())
 				.build();
@@ -35,8 +36,10 @@ public class SpringbootSwaggerApplication {
 		return new ApiInfoBuilder()
 				//页面标题
 				.title("Spring Boot 测试使用 Swagger2 构建RESTful API")
+				//服务url
 				.termsOfServiceUrl("http://localhost:8081/")
-				.contact(new Contact("doyutu", "", ""))
+				//作者
+				.contact(new Contact("doyutu","",""))
 				//版本号
 				.version("1.0.0")
 				//描述

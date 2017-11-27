@@ -12,7 +12,7 @@ public class Swagger {
 
     @GetMapping(value = "get")
     @ApiOperation(value = "get hello", httpMethod = "GET")
-    @ApiImplicitParams({@ApiImplicitParam(name = "msg", value = "内容", paramType = "form", dataType = "String",required = true)})
+    @ApiImplicitParams({@ApiImplicitParam(name = "msg", value = "内容", paramType = "query", dataType = "String",required = true)})
     @ApiResponse(code = 200, message = "aaaa")
     public String hello(@RequestParam String msg){
         return "get swagger:" + msg;
