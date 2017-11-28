@@ -13,14 +13,14 @@ public class FeignController {
     private FeignServer feignServer;
 
     @GetMapping("/feign")
-    public String feign(){
+    public String feign() {
         String ribbon = feignServer.consume();
         System.out.println(ribbon);
         return ribbon;
     }
 
     @GetMapping("/fallback")
-    public String fallback(){
+    public String fallback() {
         return feignServer.fallback();
     }
 }

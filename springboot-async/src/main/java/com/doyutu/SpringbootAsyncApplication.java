@@ -13,18 +13,18 @@ import java.nio.charset.StandardCharsets;
 @Component
 public class SpringbootAsyncApplication {
 
-	@Bean
-	public AsyncRestTemplate asyncRestTemplate() {
-		AsyncRestTemplate asyncRestTemplate = new AsyncRestTemplate();
-		/** 设置编码器为UTF-8 防止中文乱码，其RestTemplate默认编码为 ISO-8859-1
-		 * {@link org.springframework.web.client.RestTemplate}
-		 * {@link org.springframework.http.converter.StringHttpMessageConverter.DEFAULT_CHARSET}
-		 */
-		asyncRestTemplate.getMessageConverters().set(1, new StringHttpMessageConverter(StandardCharsets.UTF_8));
-		return asyncRestTemplate;
-	}
+    @Bean
+    public AsyncRestTemplate asyncRestTemplate() {
+        AsyncRestTemplate asyncRestTemplate = new AsyncRestTemplate();
+        /** 设置编码器为UTF-8 防止中文乱码，其RestTemplate默认编码为 ISO-8859-1
+         * {@link org.springframework.web.client.RestTemplate}
+         * {@link org.springframework.http.converter.StringHttpMessageConverter.DEFAULT_CHARSET}
+         */
+        asyncRestTemplate.getMessageConverters().set(1, new StringHttpMessageConverter(StandardCharsets.UTF_8));
+        return asyncRestTemplate;
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringbootAsyncApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringbootAsyncApplication.class, args);
+    }
 }

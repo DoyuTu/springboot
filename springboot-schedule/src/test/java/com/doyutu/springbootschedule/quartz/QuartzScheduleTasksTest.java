@@ -10,9 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import java.text.ParseException;
 
-import static org.junit.Assert.*;
-
-public class QuartzScheduleTasksTest extends SpringbootScheduleApplicationTests{
+public class QuartzScheduleTasksTest extends SpringbootScheduleApplicationTests {
 
     private static final Logger log = LoggerFactory.getLogger(QuartzScheduleTasksTest.class);
 

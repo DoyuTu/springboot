@@ -13,7 +13,7 @@ import java.util.concurrent.Future;
 @Component
 public class SpringAsync {
 
-    private static final Logger log = LoggerFactory.getLogger(SpringAsync.class );
+    private static final Logger log = LoggerFactory.getLogger(SpringAsync.class);
 
     @Async
     public Future<String> async() throws InterruptedException {

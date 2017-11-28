@@ -18,12 +18,12 @@ public class SpringAsyncRestTest {
     private SpringAsyncRest springAsyncRest;
 
     private static final String url = "https://www.baidu.com";
-    private static Map<String,String> param = new HashMap<>(8);
+    private static Map<String, String> param = new HashMap<>(8);
 
     @Test
     public void springAsyncRestTester() {
-        param.put("aaa","bbb");
-        param.put("11","22");
+        param.put("aaa", "bbb");
+        param.put("11", "22");
         springAsyncRest.asyncRest(url, param);
         try {
             Thread.sleep(2000L);

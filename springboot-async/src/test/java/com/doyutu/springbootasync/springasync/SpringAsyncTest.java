@@ -13,7 +13,7 @@ import java.util.concurrent.Future;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class SpringAsyncTest{
+public class SpringAsyncTest {
 
     private static final Logger log = LoggerFactory.getLogger(SpringAsyncTest.class);
 

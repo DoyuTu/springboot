@@ -26,6 +26,7 @@
 		<module>springboot-cloud-zuul</module>
 		<module>springboot-schedule</module>
 		<module>springboot-mail</module>
+		<module>springboot-swagger</module>
 	</modules>
 
 	<parent>

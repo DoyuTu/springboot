@@ -14,7 +14,7 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.File;
 
-public class MailTest extends SpringbootMailApplicationTests{
+public class MailTest extends SpringbootMailApplicationTests {
 
     private static final Logger log = LoggerFactory.getLogger(MailTest.class);
 
@@ -27,7 +27,7 @@ public class MailTest extends SpringbootMailApplicationTests{
     private static final String to = "85xxxxx72@qq.com";
 
     @Test
-    public void sendSimpleMail(){
+    public void sendSimpleMail() {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(from);
         message.setTo(to);
@@ -37,7 +37,7 @@ public class MailTest extends SpringbootMailApplicationTests{
     }
 
     @Test
-    public void sendAttachmentsMail(){
+    public void sendAttachmentsMail() {
         MimeMessage message = mailSender.createMimeMessage();
         try {
             //开启多组件上传功能

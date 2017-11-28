@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import java.text.MessageFormat;
 
-public class QuartzScheduleTasks implements Job{
+public class QuartzScheduleTasks implements Job {
 
     private static final Logger log = LoggerFactory.getLogger(QuartzScheduleTasks.class);
 

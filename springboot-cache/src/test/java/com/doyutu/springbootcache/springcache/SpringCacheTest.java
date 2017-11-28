@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 
-public class SpringCacheTest extends BaseTester{
+public class SpringCacheTest extends BaseTester {
 
     private static final Logger log = LoggerFactory.getLogger(SpringCacheTest.class);
 
@@ -29,7 +29,7 @@ public class SpringCacheTest extends BaseTester{
     @Test
     public void caffeineTest() throws InterruptedException {
         Cache<String, String> cache = caffeineCache.caffeineBuild();
-        cache.put("A","1");
+        cache.put("A", "1");
         Assert.assertNotNull(cache.getIfPresent("A"));
         Thread.sleep(1500L);
         Assert.assertNull(cache.getIfPresent("A"));

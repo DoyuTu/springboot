@@ -7,7 +7,7 @@ public class ErrorInfo<T> {
     private boolean state = false;
     private Integer code;
     private String msg;
-    private T obj ;
+    private T obj;
 
     public String getMsg() {
         return msg;

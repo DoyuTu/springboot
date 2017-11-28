@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- *  POST调用 http://{url}:{port}/refresh 实现数据热加载
- *  如调用出现 401 错误，Unauthorized
- *  需要关闭security安全模块
+ * POST调用 http://{url}:{port}/refresh 实现数据热加载
+ * 如调用出现 401 错误，Unauthorized
+ * 需要关闭security安全模块
  */
 
 @RestController

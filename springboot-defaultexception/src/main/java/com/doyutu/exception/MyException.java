@@ -6,7 +6,7 @@ public class MyException extends RuntimeException {
     private String msg = "";
     private ResultEnum codeEnum = ResultEnum.ERROR;
 
-    public MyException(){
+    public MyException() {
         super();
     }
 

@@ -11,6 +11,7 @@ import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
 import java.nio.charset.StandardCharsets;
+
 /**
  * http://localhost:35001/hystrix.stream   API stream
  * http://localhost:35001/hystrix  仪表盘 Dashboard
@@ -21,16 +22,16 @@ import java.nio.charset.StandardCharsets;
 @EnableHystrixDashboard
 public class SpringbootCloudHystrixApplication {
 
-	@Bean
-	@LoadBalanced
-	public RestTemplate restTemplate() {
-		RestTemplate restTemplate = new RestTemplate();
-		//改变默认编码，防止中文乱码
-		restTemplate.getMessageConverters().set(1, new StringHttpMessageConverter(StandardCharsets.UTF_8));
-		return restTemplate;
-	}
+    @Bean
+    @LoadBalanced
+    public RestTemplate restTemplate() {
+        RestTemplate restTemplate = new RestTemplate();
+        //改变默认编码，防止中文乱码
+        restTemplate.getMessageConverters().set(1, new StringHttpMessageConverter(StandardCharsets.UTF_8));
+        return restTemplate;
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringbootCloudHystrixApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringbootCloudHystrixApplication.class, args);
+    }
 }

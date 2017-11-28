@@ -12,11 +12,10 @@ public class RibbonService {
     private RestTemplate restTemplate;
 
     /**
-     *
      * @param url 必须为ServiceID
      * @return Response
      */
-    public String getService(String url){
+    public String getService(String url) {
         return this.restTemplate.getForObject(url, String.class);
     }
 

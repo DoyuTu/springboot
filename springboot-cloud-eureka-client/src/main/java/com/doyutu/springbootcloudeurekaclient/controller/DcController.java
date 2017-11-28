@@ -20,7 +20,7 @@ public class DcController {
     }
 
     @GetMapping("/fallback")
-     public String fallback(){
+    public String fallback() {
         System.out.println("fallback");
         throw new RuntimeException("fallback");
     }

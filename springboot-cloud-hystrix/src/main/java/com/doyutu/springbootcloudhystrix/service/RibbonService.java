@@ -14,11 +14,11 @@ public class RibbonService {
     private RestTemplate restTemplate;
 
     @HystrixCommand(fallbackMethod = "fallback")
-    public String getService(String url){
+    public String getService(String url) {
         return this.restTemplate.getForObject(url, String.class);
     }
 
-    public String fallback(String url){
+    public String fallback(String url) {
         System.out.println(url + "：Ribbon异常回调");
         return url;
     }

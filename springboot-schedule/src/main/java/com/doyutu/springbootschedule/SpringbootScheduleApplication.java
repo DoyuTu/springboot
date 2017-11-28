@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SpringbootScheduleApplication {
 
-	@Autowired
-	DynamicScheduleTasks dynamicScheduleTasks;
+    @Autowired
+    DynamicScheduleTasks dynamicScheduleTasks;
 
-	@GetMapping("/updateDynamicTask")
-	private Object updateDynamicTask(){
-		dynamicScheduleTasks.setCron("*/3 * * * * ?");
-		return "SUCCESS";
-	}
+    @GetMapping("/updateDynamicTask")
+    private Object updateDynamicTask() {
+        dynamicScheduleTasks.setCron("*/3 * * * * ?");
+        return "SUCCESS";
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringbootScheduleApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringbootScheduleApplication.class, args);
+    }
 }
