@@ -1,7 +1,11 @@
 ## SpringBoot模组化
-旨在记录学习的点点滴滴
+代码编写时尽量会使用最新的依赖和框架。
 
-## 开发环境
+旨在记录学习中的点点滴滴。
+
+### 开发环境
+* spring-boot-starter-parent v1.5.8.RELEASE
+---
 | 工具 | 版本或描述 |
 |-----|-----|
 | OS | Windows 7 & 10 |
@@ -10,14 +14,18 @@
 | Maven | 3.3.9 |
 
 ### 普通模组
+* spring-boot-starter-parent v1.5.8.RELEASE
+* spring-cloud.version Dalston.SR4
+---
 | 模组名 | 功能或描述 |
 |-------|-------|
-| springboot | 除SpringCloud模组外的父模组，有模块共用的依赖和LogBack |
+| springboot | 除SpringCloud外的父模组。公用依赖与LogBack |
 | springboot-async | SpringAsync & SpringAsyncRestTemplate |
 | springboot-cache | SpringCache & Caffeine |
 | springboot-defaultexception | 统一异常处理 & 定制错误页 |
 | springboot-schedule | SpringSchedule & Quartz简单使用 |
 | springboot-mail | SpringMail |
+| springboot-swagger | Swagger-ui & Swagger-bootstrap-ui |
 
 ### spring-cloud微服务模组功能简介
 | 模组名 | serviceId | port  | 功能或描述 |
