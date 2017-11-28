@@ -19,7 +19,7 @@ import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboar
 @EnableCircuitBreaker
 public class SpringbootCloudFeignApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringbootCloudFeignApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringbootCloudFeignApplication.class, args);
+    }
 }

@@ -12,19 +12,19 @@ import org.springframework.http.HttpStatus;
 @ComponentScan(basePackages = "com.doyutu.**")
 public class SpringbootDefaultexceptionApplication {
 
-	@Bean
-	public EmbeddedServletContainerCustomizer containerCustomizer() {
+    @Bean
+    public EmbeddedServletContainerCustomizer containerCustomizer() {
 
-		return (container -> {
-			ErrorPage error401Page = new ErrorPage(HttpStatus.UNAUTHORIZED, "/401.html");
-			ErrorPage error404Page = new ErrorPage(HttpStatus.NOT_FOUND, "/404.html");
-			ErrorPage error500Page = new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/404.html");
+        return (container -> {
+            ErrorPage error401Page = new ErrorPage(HttpStatus.UNAUTHORIZED, "/401.html");
+            ErrorPage error404Page = new ErrorPage(HttpStatus.NOT_FOUND, "/404.html");
+            ErrorPage error500Page = new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/404.html");
 
-			container.addErrorPages(error401Page, error404Page, error500Page);
-		});
-	}
+            container.addErrorPages(error401Page, error404Page, error500Page);
+        });
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringbootDefaultexceptionApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringbootDefaultexceptionApplication.class, args);
+    }
 }

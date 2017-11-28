@@ -13,7 +13,7 @@ public class Base {
     }
 
     @RequestMapping("/")
-    public void exception(){
+    public void exception() {
         throw new MyException("异常啦");
     }
 }

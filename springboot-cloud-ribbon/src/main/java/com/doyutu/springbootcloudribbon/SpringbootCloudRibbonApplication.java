@@ -15,16 +15,16 @@ import java.nio.charset.StandardCharsets;
 @EnableDiscoveryClient
 public class SpringbootCloudRibbonApplication {
 
-	@Bean
-	@LoadBalanced
-	public RestTemplate restTemplate() {
-		RestTemplate restTemplate = new RestTemplate();
-		//改变默认编码，防止中文乱码
-		restTemplate.getMessageConverters().set(1, new StringHttpMessageConverter(StandardCharsets.UTF_8));
-		return restTemplate;
-	}
+    @Bean
+    @LoadBalanced
+    public RestTemplate restTemplate() {
+        RestTemplate restTemplate = new RestTemplate();
+        //改变默认编码，防止中文乱码
+        restTemplate.getMessageConverters().set(1, new StringHttpMessageConverter(StandardCharsets.UTF_8));
+        return restTemplate;
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringbootCloudRibbonApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringbootCloudRibbonApplication.class, args);
+    }
 }

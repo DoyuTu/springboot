@@ -19,7 +19,7 @@ public class SpringAsyncRest {
     @Resource
     private AsyncRestTemplate asyncRestTemplate;
 
-    public void asyncRest(String url, Map<String,?> params) {
+    public void asyncRest(String url, Map<String, ?> params) {
         ListenableFuture<ResponseEntity<String>> future = asyncRestTemplate.getForEntity(url, String.class, params);
 
         future.addCallback(new ListenableFutureCallback<ResponseEntity<String>>() {

@@ -4,8 +4,7 @@ package com.doyutu.exception;
 public enum ResultEnum {
 
     OK(200, "OK"),
-    ERROR(100, "ERROR"),
-    ;
+    ERROR(100, "ERROR"),;
 
     private Integer code;
     private String msg;
