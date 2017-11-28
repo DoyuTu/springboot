@@ -4,8 +4,6 @@
 旨在记录学习中的点点滴滴。
 
 ### 开发环境
-* spring-boot-starter-parent v1.5.8.RELEASE
----
 | 工具 | 版本或描述 |
 |-----|-----|
 | OS | Windows 7 & 10 |
@@ -15,7 +13,6 @@
 
 ### 普通模组
 * spring-boot-starter-parent v1.5.8.RELEASE
-* spring-cloud.version Dalston.SR4
 ---
 | 模组名 | 功能或描述 |
 |-------|-------|
@@ -27,7 +24,12 @@
 | springboot-mail | SpringMail |
 | springboot-swagger | Swagger-ui & Swagger-bootstrap-ui |
 
+---
+
 ### spring-cloud微服务模组功能简介
+* spring-boot-starter-parent v1.5.8.RELEASE
+* spring-cloud.version Dalston.SR4
+---
 | 模组名 | serviceId | port  | 功能或描述 |
 | ---- | ---- | ---- | ---- |
 | springboot-cloud-eureka | eureka  | 31001  | 服务发现 |
