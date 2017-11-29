@@ -27,6 +27,7 @@
 		<module>springboot-schedule</module>
 		<module>springboot-mail</module>
 		<module>springboot-swagger</module>
+		<module>springboot-spider</module>
 	</modules>
 
 	<parent>
@@ -95,7 +96,6 @@
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
-			<!--<version>3.7</version>-->
 		</dependency>
 
 		<!--<dependency>-->
