@@ -1,6 +1,6 @@
-package com.doyutu.springbootspider;
+package com.doyutu.springbootspider.utils;
 
-import com.doyutu.springbootspider.processor.SpiderPageProcessor;
+import com.doyutu.springbootspider.processor.MusicSongListProcessor;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
@@ -41,7 +41,7 @@ public class NetEaseMusicUtils {
             String encSecKey = rsaEncrypt();
 
             HttpPost httpPost = new HttpPost("http://music.163.com/weapi/v1/resource/comments/R_SO_4_" + songId + "/?csrf_token=");
-            httpPost.addHeader("Referer", SpiderPageProcessor.BASE_URL);
+            httpPost.addHeader("Referer", MusicSongListProcessor.BASE_URL);
 
             List<NameValuePair> ls = new ArrayList<NameValuePair>();
             ls.add(new BasicNameValuePair("params", encText));

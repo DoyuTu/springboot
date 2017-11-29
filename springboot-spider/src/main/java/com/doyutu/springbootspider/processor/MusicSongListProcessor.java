@@ -15,7 +15,6 @@ import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.pipeline.ConsolePipeline;
-import us.codecraft.webmagic.pipeline.FilePipeline;
 import us.codecraft.webmagic.processor.PageProcessor;
 
 import java.io.IOException;
@@ -24,10 +23,10 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.doyutu.springbootspider.NetEaseMusicUtils.aesEncrypt;
-import static com.doyutu.springbootspider.NetEaseMusicUtils.rsaEncrypt;
+import static com.doyutu.springbootspider.utils.NetEaseMusicUtils.aesEncrypt;
+import static com.doyutu.springbootspider.utils.NetEaseMusicUtils.rsaEncrypt;
 
-public class SpiderPageProcessor implements PageProcessor {
+public class MusicSongListProcessor implements PageProcessor {
 
     //正则表达式\\. \\转义java中的\  \.转义正则中的.
 
@@ -84,7 +83,7 @@ public class SpiderPageProcessor implements PageProcessor {
     }
 
     public static void main(String[] args) {
-        Spider.create(new SpiderPageProcessor())
+        Spider.create(new MusicSongListProcessor())
                 //初始URL
                 .addUrl(START_URL)
                 .addPipeline(new ConsolePipeline())
@@ -96,7 +95,7 @@ public class SpiderPageProcessor implements PageProcessor {
     //对AJAX数据进行单独请求
     public String crawlAjaxUrl(String songId) {
         CloseableHttpClient httpclient = HttpClients.createDefault();
-        CloseableHttpResponse response =null;
+        CloseableHttpResponse response = null;
 
         try {
             //参数加密
@@ -125,7 +124,7 @@ public class SpiderPageProcessor implements PageProcessor {
             e.printStackTrace();
         } finally {
             try {
-                if (response!=null) {
+                if (response != null) {
                     response.close();
                     httpclient.close();
                 }
