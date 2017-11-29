@@ -14,6 +14,7 @@ public class ImagePipeline extends FilePipeline {
 
     @Override
     public void process(ResultItems resultItems, Task task) {
+        path = this.path + "/" + task.getUUID();
         List<String> list = resultItems.get("list");
         for (String url : list) {
             HttpUtils.createPng(path, "http://" + url);

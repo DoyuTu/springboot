@@ -15,7 +15,7 @@
 		<groupId>com.doyutu</groupId>
 		<artifactId>springboot</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
 	</parent>
 
 	<properties>

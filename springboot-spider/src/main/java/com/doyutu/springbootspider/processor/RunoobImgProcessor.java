@@ -34,14 +34,18 @@ public class RunoobImgProcessor implements PageProcessor {
         return site;
     }
 
+    /**
+     * 将在path/uuid/ 生成图片
+     * @param args
+     */
     public static void main(String[] args) {
+        String path = "D:\\png";
         Spider.create(new RunoobImgProcessor())
                 .addUrl("http://www.runoob.com")
                 .thread(2)
                 .setUUID("runoob")
-                .setSpawnUrl(true)
                 .addPipeline(new ConsolePipeline())
-                .addPipeline(new ImagePipeline("C:\\Users\\win7\\Desktop\\GitBook\\png"))
+                .addPipeline(new ImagePipeline(path))
                 .start();
     }
 }

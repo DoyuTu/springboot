@@ -6,15 +6,20 @@
     <groupId>com.doyutu</groupId>
     <artifactId>springboot-spider</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <name>springboot-spider</name>
     <description>Demo project for Spring Boot</description>
 
     <parent>
+        <!--尝试修改父类依赖，但是均以org.apache.http.annotation.ThreadSafe报错放弃-->
+        <!--尝试修改依赖，加入父类依赖，更改后发现效率大减，放弃。（以下注释内容）-->
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.5.8.RELEASE</version>
+        <!--<groupId>com.doyutu</groupId>-->
+        <!--<artifactId>springboot</artifactId>-->
+        <!--<version>0.0.1-SNAPSHOT</version>-->
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -33,22 +38,16 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
         </dependency>
-
         <!--WebMagic-core是WebMagic核心部分，只包含爬虫基本模块和基本抽取器。WebMagic-core的目标是成为网页爬虫的一个教科书般的实现。-->
         <!--<dependency>-->
-        <!--<groupId>us.codecraft</groupId>-->
-        <!--<artifactId>webmagic-core</artifactId>-->
-        <!--<version>${WebMagic.Version}</version>-->
-        <!--<exclusions>-->
-        <!--<exclusion>-->
-        <!--<groupId>org.slf4j</groupId>-->
-        <!--<artifactId>slf4j-log4j12</artifactId>-->
-        <!--</exclusion>-->
-        <!--</exclusions>-->
+            <!--<groupId>us.codecraft</groupId>-->
+            <!--<artifactId>webmagic-core</artifactId>-->
+            <!--<version>${WebMagic.Version}</version>-->
         <!--</dependency>-->
         <!--WebMagic-extension是WebMagic的主要扩展模块，提供一些更方便的编写爬虫的工具。包括注解格式定义爬虫、JSON、分布式等支持。-->
+
+        <!--下列为尝试父类依赖内容，如有兴趣，可自行测试-->
         <dependency>
             <groupId>us.codecraft</groupId>
             <artifactId>webmagic-extension</artifactId>
@@ -58,8 +57,41 @@
                     <groupId>org.slf4j</groupId>
                     <artifactId>slf4j-log4j12</artifactId>
                 </exclusion>
+                <exclusion>
+                    <groupId>org.jsoup</groupId>
+                    <artifactId>jsoup</artifactId>
+                </exclusion>
+                <!--<exclusion>-->
+                    <!--<groupId>org.apache.httpcomponents</groupId>-->
+                    <!--<artifactId>httpclient</artifactId>-->
+                <!--</exclusion>-->
             </exclusions>
         </dependency>
+
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.11.2</version>
+        </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>org.apache.httpcomponents</groupId>-->
+            <!--<artifactId>httpclient</artifactId>-->
+            <!--<version>4.3.2</version>-->
+            <!--<exclusions>-->
+                <!--<exclusion>-->
+                    <!--<groupId>org.apache.httpcomponents</groupId>-->
+                    <!--<artifactId>httpcore</artifactId>-->
+                <!--</exclusion>-->
+            <!--</exclusions>-->
+        <!--</dependency>-->
+
+        <!--<dependency>-->
+            <!--<groupId>org.apache.httpcomponents</groupId>-->
+            <!--<artifactId>httpcore</artifactId>-->
+            <!--<version>4.4.3</version>-->
+        <!--</dependency>-->
+
     </dependencies>
 
     <build>
