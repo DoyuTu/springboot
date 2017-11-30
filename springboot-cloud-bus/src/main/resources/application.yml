@@ -1,0 +1,13 @@
+server:
+  port: 40001
+# * RabbitMQ数据源
+# * POST调用 http://{url}:{port}/bus/refresh 实现同步数据加载
+# * POST调用 http://{url}:{port}/bus/refresh?destination={serviceId}:{servicePort} 实现选择性数据加载
+spring:
+  application:
+    name: bus-amqp
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest

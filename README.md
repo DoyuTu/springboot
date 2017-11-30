@@ -27,7 +27,7 @@
 ---
 
 ### spring-cloud微服务模组功能简介
-* spring-boot-starter-parent v1.5.8.RELEASE
+* spring-boot-starter-parent v1.5.9.RELEASE
 * spring-cloud.version Dalston.SR4
 ---
 | 模组名 | serviceId | port  | 功能或描述 |
@@ -41,3 +41,4 @@
 | springboot-cloud-config-server | config-server | 37001 | config配置中心提供者 |
 | springboot-cloud-config-client | config-client | 38001 | config配置中心消费者 |
 | springboot-cloud-zuul | zuul | 39001 | API网关zuul |
+| springboot-cloud-bus | bus-amqp | 40001 |config自动刷新配置 -v Edgware.RELEASE |
