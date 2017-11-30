@@ -13,6 +13,7 @@ spring:
       label: master
 #      profile
       profile:
+
 # POST调用/refresh加载数据时可能出现以下错误，需关闭Security
 #{
 #    "timestamp": 1511190254649,
@@ -24,10 +25,4 @@ spring:
 management:
   security:
     enabled: false
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:31001/eureka/
-  instance:
-    prefer-ip-address: true
-    hostname: ${spring.cloud.client.ipAddress}
+
