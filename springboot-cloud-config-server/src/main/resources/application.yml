@@ -22,3 +22,8 @@ spring:
 #         因为是公有项目所以不需要配置用户名和密码
           username:
           password:
+#    本地配置源
+#        native:
+#          search-locations: classpath:/properties/
+#  profiles:
+#    active: native
