@@ -30,15 +30,23 @@ public class NeteaseMusicListProcessor implements PageProcessor {
             List<String> links = songList.links().all();
             page.addTargetRequests(links);
         } else {
-            String artist = page.getHtml().xpath("//a[@class and @href][0]/text()").toString();
-            String title = page.getHtml().xpath("//a[@class=\"f-ff2\"][0]/text()").toString();
-            page.putField("artist", artist);
+            String title = page.getHtml().xpath("//em[@class='f-ff2'][1]/text()").toString();
+            String artist = page.getHtml().xpath("//a[@class='s-fc7' and contains(@href,'/artist?')]/text()").toString();
+            String album = page.getHtml().xpath("//a[@class='s-fc7' and  contains(@href,'/album?')]/text()").toString();
+            page.putField("url", page.getUrl());
             page.putField("title", title);
+            page.putField("artist", artist);
+            page.putField("album", album);
             return;
         }
-
     }
 
+    /**
+     * playlist id
+     * 如：http://music.163.com/#/playlist?id=109246514
+     * 或者是这样子的：http://music.163.com/playlist?id=109246514，
+     * 这两种地址的id：109246514，都是可以的
+     */
     private static final String PLAYLIST_ID = "";
 
     public static void main(String[] args) {
