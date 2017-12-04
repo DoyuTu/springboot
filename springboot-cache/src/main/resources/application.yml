@@ -1,0 +1,15 @@
+spring:
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 0
+    timeout: 0
+    pool:
+      max-idle: 8
+      max-wait: -1
+      min-idle: 0
+      max-active: 8
+    ssl: false
+  cache:
+    type: redis
