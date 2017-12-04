@@ -12,17 +12,18 @@
 | Maven | 3.3.9 |
 
 ### 普通模组
-* spring-boot-starter-parent v1.5.8.RELEASE
+* spring-boot-starter-parent v1.5.9.RELEASE
 ---
 | 模组名 | 功能或描述 |
 |-------|-------|
 | springboot | 除SpringCloud外的父模组。公用依赖与LogBack |
 | springboot-async | SpringAsync & SpringAsyncRestTemplate |
-| springboot-cache | SpringCache & Caffeine |
+| springboot-cache | SpringCache & Caffeine & Redis|
 | springboot-defaultexception | 统一异常处理 & 定制错误页 |
 | springboot-schedule | SpringSchedule & Quartz简单使用 |
 | springboot-mail | SpringMail |
 | springboot-swagger | Swagger-ui & Swagger-bootstrap-ui |
+| springboot-spider | WebMagic爬虫-网易云音乐列表、Runoob首页图片 |
 
 ---
 
