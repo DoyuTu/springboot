@@ -17,8 +17,10 @@ public class RedisCache {
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
 
+    public final String WORD = "world hello!";
+
     public String redis() {
-        redisTemplate.opsForValue().set("test", "world hello!");
+        redisTemplate.opsForValue().set("test", WORD);
         return redisTemplate.opsForValue().get("test").toString();
     }
 

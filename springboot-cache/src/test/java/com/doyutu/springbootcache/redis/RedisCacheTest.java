@@ -1,9 +1,11 @@
 package com.doyutu.springbootcache.redis;
 
 import com.doyutu.springbootcache.BaseTester;
-import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import static org.junit.Assert.assertEquals;
+
 
 public class RedisCacheTest extends BaseTester {
 
@@ -12,7 +14,7 @@ public class RedisCacheTest extends BaseTester {
 
     @Test
     public void redis() throws Exception {
-        Assert.assertEquals(redisCache.redis(), "world hello!");
+        assertEquals(redisCache.redis(), redisCache.WORD);
     }
 
 }
