@@ -29,6 +29,7 @@
 		<module>springboot-mail</module>
 		<module>springboot-swagger</module>
 		<module>springboot-spider</module>
+		<module>springboot-quasar</module>
 	</modules>
 
 	<parent>
