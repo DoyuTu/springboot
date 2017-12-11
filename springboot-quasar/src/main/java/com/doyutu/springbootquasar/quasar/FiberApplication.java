@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class FiberApplication {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException, SuspendExecution {
-        int fiberNumber = 100_000;
+        int fiberNumber = 1_000_000;
         CountDownLatch latch = new CountDownLatch(1);
         AtomicInteger counter = new AtomicInteger(0);
         Long startTime = System.currentTimeMillis();

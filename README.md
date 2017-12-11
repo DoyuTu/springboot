@@ -23,7 +23,8 @@
 | springboot-schedule | SpringSchedule & Quartz简单使用 |
 | springboot-mail | SpringMail |
 | springboot-swagger | Swagger-ui & Swagger-bootstrap-ui |
-| springboot-spider | WebMagic爬虫-网易云音乐列表、Runoob首页图片 |
+| springboot-spider | WebMagic爬虫-网易云音乐列表、Runoob首页图片爬取下载 |
+| springboot-quasar | Java纤程框架，需要配置VM（-javaagent:path-to-quasar-jar.jar）已搁置 |
 
 ---
 
