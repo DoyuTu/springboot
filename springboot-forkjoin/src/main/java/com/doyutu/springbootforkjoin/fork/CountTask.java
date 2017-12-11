@@ -41,7 +41,7 @@ public class CountTask extends RecursiveTask<Long> {
 
     public static void main(String[] args) {
         ForkJoinPool forkJoinPool = new ForkJoinPool();
-        CountTask task = new CountTask(1, 10000000);
+        CountTask task = new CountTask(1, 10_000_000);
         ForkJoinTask<Long> result = forkJoinPool.submit(task);
         try {
             System.out.println(result.get());
