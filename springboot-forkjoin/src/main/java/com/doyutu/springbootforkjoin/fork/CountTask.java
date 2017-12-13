@@ -7,6 +7,11 @@ import java.util.concurrent.RecursiveTask;
 
 public class CountTask extends RecursiveTask<Long> {
 
+    private static final long serialVersionUID = -577247533079877952L;
+
+    /**
+     * 阈值，低于此值将直接进行运算，提升性能
+     */
     private static final int THRESHOLD = 2;
     private int start;
     private int end;
