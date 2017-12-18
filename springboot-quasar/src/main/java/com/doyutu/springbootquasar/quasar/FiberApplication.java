@@ -1,16 +1,15 @@
 package com.doyutu.springbootquasar.quasar;
 
 import co.paralleluniverse.fibers.Fiber;
-import co.paralleluniverse.fibers.SuspendExecution;
 import co.paralleluniverse.strands.Strand;
 
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class FiberApplication {
 
-    public static void main(String[] args) throws ExecutionException, InterruptedException, SuspendExecution {
+    public static void fiber() throws InterruptedException {
+        //启动纤程数
         int fiberNumber = 1_000_000;
         CountDownLatch latch = new CountDownLatch(1);
         AtomicInteger counter = new AtomicInteger(0);
@@ -21,10 +20,11 @@ public class FiberApplication {
                 if (counter.get() == fiberNumber) {
                     System.out.println("done");
                 }
-                Strand.sleep(1000000);
+                Strand.sleep(1_000_000);
             }).start();
         }
         System.out.println(System.currentTimeMillis() - startTime);
+        //阻止程序退出
         latch.await();
     }
 }
