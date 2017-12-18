@@ -25,6 +25,7 @@
 | springboot-swagger | Swagger-ui & Swagger-bootstrap-ui |
 | springboot-spider | WebMagic爬虫-网易云音乐列表、Runoob首页图片爬取下载 |
 | springboot-quasar | Java纤程框架，需要配置VM（-javaagent:path-to-quasar-jar.jar）已搁置 |
+| springboot-forkjoin | ForkJoin简单使用 |
 
 ---
 
