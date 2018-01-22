@@ -1,0 +1,16 @@
+#spring:
+#  datasource:
+#    username:
+#    password:
+pagehelper:
+#  4.0.0以后可省略此项
+#  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+  auto-dialect: true
+  close-conn: true
+  offset-as-page-num: false
+spring:
+  datasource:
+    schema: import.sql
