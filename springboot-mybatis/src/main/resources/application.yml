@@ -1,16 +1,26 @@
-#spring:
-#  datasource:
-#    username:
-#    password:
-pagehelper:
-#  4.0.0以后可省略此项
-#  helper-dialect: mysql
-  reasonable: true
-  support-methods-arguments: true
-  params: count=countSql
-  auto-dialect: true
-  close-conn: true
-  offset-as-page-num: false
 spring:
   datasource:
-    schema: import.sql
+    schema: db/scheme-h2.sql
+    data: db/data-h2.sql
+    url: jdbc:h2:mem:db
+    username: sa
+    password:
+    initialize: true
+    type: com.zaxxer.hikari.HikariDataSource
+  h2:
+    console:
+      enabled: true
+      path: /console
+server:
+  port: 8888
+mybatis-plus:
+  type-aliases-package: com.doyutu.springbootmybatis.mapper
+  global-config:
+    db-column-underline: true
+    id-type: 2
+    field-strategy: 2
+    sql-injector:
+    refresh-mapper: true
+  configuration:
+    cache-enabled: false
+    map-underscore-to-camel-case: true
