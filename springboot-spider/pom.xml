@@ -6,7 +6,7 @@
     <groupId>com.doyutu</groupId>
     <artifactId>springboot-spider</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
 
     <name>springboot-spider</name>
     <description>Demo project for Spring Boot</description>
@@ -41,9 +41,9 @@
         </dependency>
         <!--WebMagic-core是WebMagic核心部分，只包含爬虫基本模块和基本抽取器。WebMagic-core的目标是成为网页爬虫的一个教科书般的实现。-->
         <!--<dependency>-->
-            <!--<groupId>us.codecraft</groupId>-->
-            <!--<artifactId>webmagic-core</artifactId>-->
-            <!--<version>${WebMagic.Version}</version>-->
+        <!--<groupId>us.codecraft</groupId>-->
+        <!--<artifactId>webmagic-core</artifactId>-->
+        <!--<version>${WebMagic.Version}</version>-->
         <!--</dependency>-->
         <!--WebMagic-extension是WebMagic的主要扩展模块，提供一些更方便的编写爬虫的工具。包括注解格式定义爬虫、JSON、分布式等支持。-->
 
@@ -62,8 +62,8 @@
                     <artifactId>jsoup</artifactId>
                 </exclusion>
                 <!--<exclusion>-->
-                    <!--<groupId>org.apache.httpcomponents</groupId>-->
-                    <!--<artifactId>httpclient</artifactId>-->
+                <!--<groupId>org.apache.httpcomponents</groupId>-->
+                <!--<artifactId>httpclient</artifactId>-->
                 <!--</exclusion>-->
             </exclusions>
         </dependency>
@@ -75,21 +75,21 @@
         </dependency>
 
         <!--<dependency>-->
-            <!--<groupId>org.apache.httpcomponents</groupId>-->
-            <!--<artifactId>httpclient</artifactId>-->
-            <!--<version>4.3.2</version>-->
-            <!--<exclusions>-->
-                <!--<exclusion>-->
-                    <!--<groupId>org.apache.httpcomponents</groupId>-->
-                    <!--<artifactId>httpcore</artifactId>-->
-                <!--</exclusion>-->
-            <!--</exclusions>-->
+        <!--<groupId>org.apache.httpcomponents</groupId>-->
+        <!--<artifactId>httpclient</artifactId>-->
+        <!--<version>4.3.2</version>-->
+        <!--<exclusions>-->
+        <!--<exclusion>-->
+        <!--<groupId>org.apache.httpcomponents</groupId>-->
+        <!--<artifactId>httpcore</artifactId>-->
+        <!--</exclusion>-->
+        <!--</exclusions>-->
         <!--</dependency>-->
 
         <!--<dependency>-->
-            <!--<groupId>org.apache.httpcomponents</groupId>-->
-            <!--<artifactId>httpcore</artifactId>-->
-            <!--<version>4.4.3</version>-->
+        <!--<groupId>org.apache.httpcomponents</groupId>-->
+        <!--<artifactId>httpcore</artifactId>-->
+        <!--<version>4.4.3</version>-->
         <!--</dependency>-->
 
     </dependencies>

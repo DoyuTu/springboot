@@ -1,0 +1,10 @@
+spring:
+  data:
+    elasticsearch:
+      cluster-name: elasticsearch
+      # 连接节点,注意在集群中通信默认是9300端口，否则会报错无法连接上！
+      cluster-nodes: localhost:9300
+      properties:
+          path:
+            logs: ./elasticsearch/log #elasticsearch日志存储目录
+            data: ./elasticsearch/data #elasticsearch数据存储目录
