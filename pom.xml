@@ -33,6 +33,7 @@
         <module>springboot-forkjoin</module>
         <module>springboot-elasticsearch</module>
         <module>springboot-mybatis</module>
+        <module>springboot-netty</module>
     </modules>
 
     <parent>
