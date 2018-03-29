@@ -34,6 +34,7 @@
         <module>springboot-elasticsearch</module>
         <module>springboot-mybatis</module>
         <module>springboot-netty</module>
+        <module>springboot-websocket</module>
     </modules>
 
     <parent>

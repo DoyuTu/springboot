@@ -8,15 +8,16 @@
 |-----|-----|
 | OS | Windows 7 & 10 |
 | JDK | 1.8 |
-| IDE | IntelliJ IDEA 2017.2.6 |
+| IDE | IntelliJ IDEA 2017.3.5 |
 | Maven | 3.3.9 |
 
 ### 普通模组
 * spring-boot-starter-parent v1.5.9.RELEASE
+* spring-boot-starter-parent v2.0.0.RELEASE
 ---
 | 模组名 | 功能或描述 |
 |-------|-------|
-| springboot | 除SpringCloud外的父模组。公用依赖与LogBack |
+| springboot | 公用依赖与LogBack |
 | springboot-async | SpringAsync & SpringAsyncRestTemplate |
 | springboot-cache | SpringCache & Caffeine & Redis|
 | springboot-defaultexception | 统一异常处理 & 定制错误页 |
@@ -28,6 +29,7 @@
 | springboot-forkjoin | ForkJoin简单使用 |
 | springboot-MybatisPlus | MybatisPlus 简单使用 |
 | springboot-Netty | Netty 服务端与客户端NIO 简单使用 |
+| springboot-WebSocket | Netty 服务端与HTML页面 简单交互 |
 
 ---
 
