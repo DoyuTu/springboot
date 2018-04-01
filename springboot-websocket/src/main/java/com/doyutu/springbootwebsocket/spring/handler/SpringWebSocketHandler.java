@@ -34,7 +34,7 @@ public class SpringWebSocketHandler extends AbstractWebSocketHandler {
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) {
-        log.info("客户ID：{}离线， 方式{}", session.getId(), status.getReason());
+        log.info("客户ID：{}离线， 方式{}", session.getId(), status.getCode());
         map.remove(session.getId());
     }
 
@@ -43,7 +43,7 @@ public class SpringWebSocketHandler extends AbstractWebSocketHandler {
         log.info("接收客户端消息：{}", message.getPayload());
         //应答
         session.sendMessage(new TextMessage("服务器应答消息：" + message.getPayload()));
-        //群发
+        //广播
         WebSocketSession userSession;
         for (String s : map.keySet()) {
             userSession = map.get(s);
