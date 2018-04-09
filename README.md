@@ -13,7 +13,7 @@
 
 ### 普通模组
 * spring-boot-starter-parent v1.5.9.RELEASE
-* spring-boot-starter-parent v2.0.0.RELEASE
+* spring-boot-starter-parent v2.0.1.RELEASE
 ---
 | 模组名 | 功能或描述 |
 |-------|-------|
@@ -29,7 +29,7 @@
 | springboot-forkjoin | ForkJoin简单使用 |
 | springboot-MybatisPlus | MybatisPlus 简单使用 |
 | springboot-Netty | Netty 服务端与客户端NIO 简单使用 |
-| springboot-WebSocket | Netty 服务端与HTML页面 简单交互 |
+| springboot-WebSocket | Netty 服务端与HTML页面 简单交互 & Spring WebSocket & Spring SockJS & Spring STOMP |
 
 ---
 
