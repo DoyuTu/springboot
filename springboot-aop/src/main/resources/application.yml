@@ -1,0 +1,26 @@
+spring:
+  profiles:
+    active: dev
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+server:
+  http2:
+    enabled: true
+  tomcat:
+    uri-encoding: utf-8
+---
+spring:
+  profiles: dev
+server:
+  port: 8080
+logging:
+  level: debug
+---
+spring:
+  profiles: prod
+logging:
+  level: warn
+server:
+  port: 8888

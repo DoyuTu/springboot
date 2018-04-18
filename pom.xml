@@ -35,6 +35,7 @@
         <module>springboot-mybatis</module>
         <module>springboot-netty</module>
         <module>springboot-websocket</module>
+        <module>springboot-aop</module>
     </modules>
 
     <parent>
