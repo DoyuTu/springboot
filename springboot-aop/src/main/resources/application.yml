@@ -10,27 +10,27 @@ spring:
     name: SpringBoot-aop
   output:
     ansi:
-      enabled: always
+      enabled: detect
 server:
   tomcat:
     uri-encoding: utf-8
-    max-threads: 1000
-    max-connections: 2000
-    min-spare-threads: 100
+    max-threads: 100
+    max-connections: 300
+  use-forward-headers: true
 ---
 spring:
   profiles: dev
 server:
   port: 8081
 logging:
-  root:
-    level: info
-  config: classpath:log4j2.xml
+  config: classpath:log4j2-spring.xml
+  level:
+    root: info
 ---
 spring:
   profiles: prod
 server:
   port: 8888
 logging:
-  root:
-    level: warn
+  level:
+    root: warn
