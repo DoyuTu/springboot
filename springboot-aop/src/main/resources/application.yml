@@ -5,22 +5,32 @@ spring:
     encoding:
       charset: UTF-8
       enabled: true
+      force: true
+  application:
+    name: SpringBoot-aop
+  output:
+    ansi:
+      enabled: always
 server:
-  http2:
-    enabled: true
   tomcat:
     uri-encoding: utf-8
+    max-threads: 1000
+    max-connections: 2000
+    min-spare-threads: 100
 ---
 spring:
   profiles: dev
 server:
-  port: 8080
+  port: 8081
 logging:
-  level: debug
+  root:
+    level: info
+  config: classpath:log4j2.xml
 ---
 spring:
   profiles: prod
-logging:
-  level: warn
 server:
   port: 8888
+logging:
+  root:
+    level: warn
