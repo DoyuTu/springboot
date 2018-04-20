@@ -1,9 +1,9 @@
 package com.doyutu.springbootaop.proxy;
 
 import lombok.extern.slf4j.Slf4j;
-import net.sf.cglib.proxy.Enhancer;
-import net.sf.cglib.proxy.MethodInterceptor;
-import net.sf.cglib.proxy.MethodProxy;
+import org.springframework.cglib.proxy.Enhancer;
+import org.springframework.cglib.proxy.MethodInterceptor;
+import org.springframework.cglib.proxy.MethodProxy;
 
 import java.lang.reflect.Method;
 import java.util.Map;
@@ -19,6 +19,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public class CglibProxy implements MethodInterceptor {
 
     private static final Map<Method, Object> interceptMap = new ConcurrentHashMap<>();
+
+    private static final Map<Method, Object> methodMap = new ConcurrentHashMap<>();
 
     public Object getProxy(Class<?> cls) {
         Enhancer enhancer = new Enhancer();
