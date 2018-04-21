@@ -1,4 +1,4 @@
-package com.doyutu.springbootaop.proxy;
+package com.doyutu.springbootaop.fremework.proxy;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cglib.proxy.Enhancer;

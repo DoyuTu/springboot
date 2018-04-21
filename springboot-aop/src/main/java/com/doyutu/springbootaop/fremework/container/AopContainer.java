@@ -1,6 +1,6 @@
-package com.doyutu.springbootaop.container;
+package com.doyutu.springbootaop.fremework.container;
 
-import com.doyutu.springbootaop.annotation.Beans;
+import com.doyutu.springbootaop.fremework.annotation.Beans;
 
 /**
  * @author doyutu

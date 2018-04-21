@@ -1,8 +1,8 @@
-package com.doyutu.springbootaop.init;
+package com.doyutu.springbootaop.fremework.init;
 
-import com.doyutu.springbootaop.container.BeanContainer;
-import com.doyutu.springbootaop.proxy.CglibProxy;
-import com.doyutu.springbootaop.util.ClassUtil;
+import com.doyutu.springbootaop.fremework.container.BeanContainer;
+import com.doyutu.springbootaop.fremework.proxy.CglibProxy;
+import com.doyutu.springbootaop.fremework.util.ClassUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.CollectionUtils;
 
@@ -17,7 +17,7 @@ import java.util.Set;
  * springboot
  */
 @Slf4j
-public class InitService {
+public class InitContext {
 
     private static CglibProxy proxy = new CglibProxy();
 

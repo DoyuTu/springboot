@@ -7,7 +7,7 @@ spring:
       enabled: true
       force: true
   application:
-    name: SpringBoot-aop
+    name: SpringBoot-fremework
   output:
     ansi:
       enabled: detect

@@ -1,6 +1,6 @@
-package com.doyutu.springbootaop.servlet;
+package com.doyutu.springbootaop.fremework.servlet;
 
-import com.doyutu.springbootaop.init.InitService;
+import com.doyutu.springbootaop.fremework.init.InitContext;
 import com.google.common.base.Strings;
 import lombok.extern.slf4j.Slf4j;
 
@@ -34,7 +34,7 @@ public class AopServlet implements ServletContextListener {
                 return;
             }
             String [] paths = path.split(",");
-            InitService.init(paths);
+            InitContext.init(paths);
         } catch (Exception e) {
             e.printStackTrace();
         }
