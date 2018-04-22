@@ -22,21 +22,17 @@ public class AopServlet implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         System.out.println("运行contextInitialized");
+        String path = servletContextEvent.getServletContext().getInitParameter("scanPath");
+        if (Strings.isNullOrEmpty(path)) {
+            log.warn("启动参数scanPath为空");
+            return;
+        }
+        String[] paths = path.split(",");
+        InitContext.init(paths);
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
-        try {
-            System.out.println("运行contextDestroyed");
-            String path = servletContextEvent.getServletContext().getInitParameter("scanPath");
-            if (Strings.isNullOrEmpty(path)) {
-                log.warn("启动参数scanPath为空");
-                return;
-            }
-            String [] paths = path.split(",");
-            InitContext.init(paths);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        System.out.println("结束contextDestroyed");
     }
 }

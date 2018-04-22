@@ -8,7 +8,7 @@
             <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
             <!--             这个都知道是输出日志的格式 -->
             <PatternLayout
-                    pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} %yellow{%-5level} %M --- [%t] %cyan{%class{36}} %msg%xEx%n"/>
+                    pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} %yellow{%-5level} %L %M --- [%t] %cyan{%class{36}} %msg%xEx%n"/>
         </Console>
 
         <!--         文件会打印出所有信息，这个log每次运行程序会自动清空，由append属性决定，这个也挺有用的，适合临时测试用 -->

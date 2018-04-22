@@ -1,6 +1,7 @@
 package com.doyutu.springbootaop.fremework.container;
 
 import com.google.common.base.Strings;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.annotation.Annotation;
@@ -17,13 +18,14 @@ import java.util.concurrent.ConcurrentHashMap;
 @SuppressWarnings("unchecked")
 public class BeanContainer {
 
+    @Getter
     private static final Map<String, Object> beanMap = new ConcurrentHashMap<>();
 
     public static void putBean(String beanName,Object bean) {
         beanMap.put(beanName, bean);
     }
 
-    public static boolean containerBean(String beanName) {
+    public static boolean containsBean(String beanName) {
         return beanMap.containsKey(beanName);
     }
 

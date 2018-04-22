@@ -11,6 +11,6 @@ import com.doyutu.springbootaop.fremework.annotation.Component;
 @Component
 public class AopService {
     public String getAop() {
-        return "aop";
+        return "Inject";
     }
 }

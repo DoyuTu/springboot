@@ -1,4 +1,4 @@
-package com.doyutu.springbootaop.web;
+package com.doyutu.springbootaop.web.controller;
 
 import com.doyutu.springbootaop.fremework.annotation.Component;
 import com.doyutu.springbootaop.fremework.annotation.Inject;
@@ -15,9 +15,8 @@ public class AopController {
     @Inject
     private AopService aopService;
 
-    public void getService() {
-        String aop = aopService.getAop();
-        System.out.println(aop);
+    public String getService() {
+        return aopService.getAop();
     }
 
 }
