@@ -2,8 +2,9 @@ package com.doyutu.springbootaop.web.controller;
 
 import com.doyutu.springbootaop.fremework.container.ContextContainer;
 import com.doyutu.springbootaop.fremework.init.InitContext;
-import org.junit.Assert;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 
 /**
@@ -13,13 +14,17 @@ import org.junit.Test;
  * @date 2018-04-22 20:02
  * springboot
  */
-public class InjuectTest {
+public class InjectTest {
 
     @Test
     public void testInject() {
-        InitContext.init(new String[]{"com.doyutu.springbootaop.web.controller"});
+        InitContext.init(new String[]{"com.doyutu.springbootaop"});
         AopController aopController = ContextContainer.getContext(AopController.class);
-        Assert.assertEquals("Inject", aopController.getService());
+//        AopService aopService = new AopService();
+//        CglibProxy proxy = new CglibProxy();
+//        proxy.getProxy(aopService.getClass());
+//        System.out.println(aopService.getAop());
+        assertEquals("Inject", aopController.getService());
     }
 
 }

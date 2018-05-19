@@ -2,6 +2,7 @@ package com.doyutu.springbootaop.service;
 
 
 import com.doyutu.springbootaop.fremework.annotation.Component;
+import com.doyutu.springbootaop.fremework.annotation.LogHead;
 
 /**
  * @author doyutu
@@ -10,6 +11,8 @@ import com.doyutu.springbootaop.fremework.annotation.Component;
  */
 @Component
 public class AopService {
+
+    @LogHead
     public String getAop() {
         return "Inject";
     }

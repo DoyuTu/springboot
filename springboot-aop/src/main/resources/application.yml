@@ -21,7 +21,7 @@ server:
 spring:
   profiles: dev
 server:
-  port: 8081
+  port: 8088
 logging:
   config: classpath:log4j2-spring.xml
   level:

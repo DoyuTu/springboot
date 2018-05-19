@@ -7,12 +7,13 @@ import java.lang.annotation.Target;
 
 /**
  * @author doyutu
- * @date 2018-04-18 10:41
+ * @date 2018-05-18 19:35
  * springboot
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Around {
+public @interface LogHead {
 
-    Class<?> [] value() default {};
+    String value() default "";
+
 }

@@ -12,7 +12,7 @@ public class SpringbootAopApplication {
 
     @Bean
     public ServletContextInitializer initializer() {
-        return servletContext -> servletContext.setInitParameter("scanPath", "com.doyutu.springbootaop.web");
+        return servletContext -> servletContext.setInitParameter("scanPath", "com.doyutu.springbootaop");
     }
 
     public static void main(String[] args) {

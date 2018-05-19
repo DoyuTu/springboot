@@ -1,16 +1,22 @@
 package com.doyutu.springbootaop.fremework.init;
 
+import com.doyutu.springbootaop.fremework.annotation.Around;
 import com.doyutu.springbootaop.fremework.annotation.Component;
 import com.doyutu.springbootaop.fremework.annotation.Inject;
+import com.doyutu.springbootaop.fremework.container.AspectContainer;
+import com.doyutu.springbootaop.fremework.container.BeanContainer;
 import com.doyutu.springbootaop.fremework.container.ContextContainer;
 import com.doyutu.springbootaop.fremework.container.FieldContainer;
+import com.doyutu.springbootaop.fremework.point.AspectPoint;
 import com.doyutu.springbootaop.fremework.proxy.CglibProxy;
 import com.doyutu.springbootaop.fremework.util.ClassUtil;
 import com.doyutu.springbootaop.service.AopService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.CollectionUtils;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -34,7 +40,80 @@ public class InitContext {
         initComponent(cls);
         initInjection();
 //        initClass(cls);
+        initAspect();
+        initIntercept();
 
+    }
+
+    private static void initIntercept() {
+        ContextContainer.getContextContainer()
+                .entrySet()
+                .parallelStream()
+                .forEach(c -> {
+                    //扫描所有包含aspectMap中的方法
+                    for (Method method : c.getKey().getDeclaredMethods()) {
+                        for (Annotation annotation : method.getDeclaredAnnotations()) {
+                            if (annotation == null) {
+                                continue;
+                            }
+                            String name = annotation.annotationType().getName();
+                            Set<Method> methods = AspectContainer.aspectMap.get(name);
+                            if (methods == null || methods.size() == 0) {
+                                continue;
+                            }
+                            List<Method> o = new ArrayList<>(methods);
+                            AspectPoint point = new AspectPoint();
+                            loadAspectPoint(point, o, method);
+                            BeanContainer.putBean(c.getKey().getName(), point);
+                            Object aopService = FieldContainer.getFiedlContainer().get("aopService");
+                            proxy.getProxy(aopService.getClass());
+                        }
+                    }
+                });
+    }
+
+    private static void loadAspectPoint(AspectPoint point ,List<Method> methods, Method m) {
+        if (CollectionUtils.isEmpty(methods)) {
+            return;
+        }
+        Method aspectMethod = methods.get(0);
+        point.setAspectMethod(aspectMethod);
+        point.setAspectBean(aspectMethod.getDeclaringClass());
+        point.setClazz(m.getDeclaringClass());
+        methods.remove(0);
+        if (CollectionUtils.isEmpty(methods)) {
+            point.setChildPoint(null);
+        }
+        loadAspectPoint(point, methods, m);
+    }
+
+    private static void initAspect() {
+        ContextContainer.getContextContainer()
+                .entrySet()
+                .parallelStream()
+                .forEach(c ->{
+                    for (Method method : c.getKey().getDeclaredMethods()) {
+                        Around around = method.getDeclaredAnnotation(Around.class);
+                        if (around == null) {
+                            continue;
+                        }
+                        String name;
+                        Class<?> [] value = around.value();
+                        for (Class<?> ar : value) {
+                            if (ar == null) {
+                                continue;
+                            }
+                            name = ar.getName();
+                            Set<Method> methods = AspectContainer.aspectMap.get(name);
+                            if (methods != null) {
+                                methods.add(method);
+                            } else {
+                                AspectContainer.aspectMap.put(name, Collections.singleton(method));
+                            }
+                        }
+
+                    }
+                });
     }
 
     private static void initComponent(Set<Class<?>> cls) {
