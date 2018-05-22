@@ -18,6 +18,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 /**
@@ -31,6 +32,11 @@ public class InitContext {
 
     private static CglibProxy proxy = new CglibProxy();
 
+    /**
+     * key拦截方法，value拦截器的方法
+     */
+    public static final Map<String, AspectPoint> INTERCEPT_MAP = new ConcurrentHashMap<>();
+
     public static void init(String [] paths) {
         Set<Class<?>> cls = new HashSet<>();
         Arrays.stream(paths).forEach((String c) -> cls.addAll(ClassUtil.getClasses(c)));
@@ -38,10 +44,10 @@ public class InitContext {
             return;
         }
         initComponent(cls);
-        initInjection();
-//        initClass(cls);
         initAspect();
         initIntercept();
+        initInjection();
+//        initClass(cls);
 
     }
 
@@ -64,9 +70,9 @@ public class InitContext {
                             List<Method> o = new ArrayList<>(methods);
                             AspectPoint point = new AspectPoint();
                             loadAspectPoint(point, o, method);
-                            BeanContainer.putBean(c.getKey().getName(), point);
-                            Object aopService = FieldContainer.getFiedlContainer().get("aopService");
-                            proxy.getProxy(aopService.getClass());
+                            INTERCEPT_MAP.put(c.getKey().getName(), point);
+                            Object proxy = InitContext.proxy.getProxy(c.getKey());
+                            BeanContainer.putBean(c.getKey().getName(), proxy);
                         }
                     }
                 });
@@ -145,9 +151,14 @@ public class InitContext {
                             try {
                                 field.setAccessible(true);
                                 //属性注入
-                                field.set(v, type.newInstance());
-                                FieldContainer.putContent(field.getName(), field.get(v));
-                            } catch (IllegalAccessException | InstantiationException e) {
+                                String name = type.getName();
+                                Object bean = BeanContainer.getBean(name);
+                                if (Objects.isNull(bean)) {
+                                    throw new RuntimeException("找不到的Bean：" + name);
+                                }
+                                field.set(v,bean);
+                                FieldContainer.putContent(field.getName(), field.get(k));
+                            } catch (IllegalAccessException e) {
                                 e.printStackTrace();
                             }
                         }

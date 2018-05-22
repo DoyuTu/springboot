@@ -2,6 +2,7 @@ package com.doyutu.springbootaop.fremework.proxy;
 
 import com.doyutu.springbootaop.fremework.container.BeanContainer;
 import com.doyutu.springbootaop.fremework.entity.AspectEntity;
+import com.doyutu.springbootaop.fremework.init.InitContext;
 import com.doyutu.springbootaop.fremework.point.AspectPoint;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cglib.proxy.Enhancer;
@@ -33,8 +34,12 @@ public class CglibProxy implements MethodInterceptor {
         if (Modifier.isInterface(modifier)) {
             return null;
         }
-        if (BeanContainer.getBeanMap().get(cls.getName()) == null) {
-            return null;
+        if (InitContext.INTERCEPT_MAP.get(cls.getName()) == null) {
+            try {
+                return cls.newInstance();
+            } catch (InstantiationException | IllegalAccessException e) {
+                e.printStackTrace();
+            }
         }
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(cls);
