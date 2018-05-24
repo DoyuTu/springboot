@@ -1,15 +1,13 @@
-## SpringBoot模组化
-代码编写时尽量会使用最新的依赖和框架。
-
-旨在记录学习中的点点滴滴。
+## SpringBoot模组
+记录学习中的点点滴滴
 
 ### 开发环境
 | 工具 | 版本或描述 |
 |-----|-----|
 | OS | Windows 7 & 10 |
 | JDK | 1.8 |
-| IDE | IntelliJ IDEA 2017.3.5 |
-| Maven | 3.3.9 |
+| IDE | IntelliJ IDEA 2018.1 |
+| Maven | 3.5.0 |
 
 ### 普通模组
 * spring-boot-starter-parent v1.5.9.RELEASE
@@ -30,6 +28,7 @@
 | springboot-MybatisPlus | MybatisPlus 简单使用 |
 | springboot-Netty | Netty 服务端与客户端NIO 简单使用 |
 | springboot-WebSocket | Netty 服务端与HTML页面 简单交互 & Spring WebSocket & Spring SockJS & Spring STOMP |
+| springboot-aop| AOP与DI简单实现(Log4j2) |
 
 ---
 
