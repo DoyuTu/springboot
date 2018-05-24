@@ -8,11 +8,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.cglib.proxy.Enhancer;
 import org.springframework.cglib.proxy.MethodInterceptor;
 import org.springframework.cglib.proxy.MethodProxy;
+import org.springframework.util.CollectionUtils;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * CGLIB代理
@@ -22,9 +23,6 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 @Slf4j
 public class CglibProxy implements MethodInterceptor {
-    private static final Map<Method, AspectEntity> interceptMap = new ConcurrentHashMap<>();
-
-    private static final Map<Method, Object> methodMap = new ConcurrentHashMap<>();
 
     public Object getProxy(Class<?> cls) {
         Integer modifier = cls.getModifiers();
@@ -50,23 +48,58 @@ public class CglibProxy implements MethodInterceptor {
     @Override
     public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
         Object invokeSuper = methodProxy.invokeSuper(o, objects);
-        if (!interceptMap.containsKey(method)) {
+        Class<?> aClass = method.getDeclaringClass();
+        String name = aClass.getName();
+        if (!InitContext.INTERCEPT_MAP.containsKey(name)) {
             return invokeSuper;
         }
-        AspectEntity entity = interceptMap.get(method);
-        AspectPoint point = new AspectPoint();
+        AspectPoint point = getAspectPoint(method, aClass, name, methodProxy);
+        if (point == null) {
+            return methodProxy.invokeSuper(o, objects);
+        }
         point.setParams(objects);
-        AspectPoint bean = BeanContainer.getBean(o.getClass());
-        if (bean == null) {
-            return invokeSuper;
-        }
-        bean.setParams(objects);
-        return bean.getAspectMethod().invoke(bean.getAspectBean(),
-                bean);
+        return point.getAspectMethod().invoke(point.getAspectBean(),
+                point);
     }
 
-    public static void putIntercept(Method key, AspectEntity value) {
-        interceptMap.put(key, value);
+    private AspectPoint getAspectPoint(Method method, Class<?> aClass, String name, MethodProxy methodProxy) {
+        if (InitContext.METHOD_INTERCEPT_MAP.containsKey(method)) {
+            return InitContext.METHOD_INTERCEPT_MAP.get(method);
+        }
+        List<AspectEntity> entity = new ArrayList<>(InitContext.INTERCEPT_MAP.get(name));
+        AspectPoint point = new AspectPoint();
+        Object bean = BeanContainer.getBean(aClass);
+        point.setClazz(aClass);
+        point.setBean(bean);
+        point.setProxy(methodProxy);
+        Method aspectMethod = entity.get(0).getAspectInvokeMethod();
+        point.setAspectBean(BeanContainer.getBean(aspectMethod.getDeclaringClass()));
+        point.setAspectMethod(aspectMethod);
+        point.setMethod(method);
+        entity.remove(0);
+        AspectPoint parseAspect = parseAspect(point, entity);
+        if (parseAspect != null) {
+            point.setChildPoint(parseAspect);
+        }
+        InitContext.METHOD_INTERCEPT_MAP.put(method, point);
+        return point;
+    }
+
+    private AspectPoint parseAspect(AspectPoint basePoint, List<AspectEntity> entityList) {
+        if (CollectionUtils.isEmpty(entityList)) {
+            return null;
+        }
+        Method invokeMethod = entityList.get(0).getAspectInvokeMethod();
+        entityList.remove(0);
+        Object bean = BeanContainer.getBean(invokeMethod.getDeclaringClass());
+        basePoint.setAspectMethod(invokeMethod);
+        basePoint.setAspectBean(bean);
+        AspectPoint point = parseAspect(basePoint, entityList);
+        if (point != null) {
+            basePoint.setChildPoint(point);
+            return basePoint;
+        }
+        return basePoint;
     }
 
 }

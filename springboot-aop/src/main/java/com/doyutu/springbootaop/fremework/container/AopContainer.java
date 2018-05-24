@@ -1,6 +1,7 @@
 package com.doyutu.springbootaop.fremework.container;
 
 import com.doyutu.springbootaop.fremework.annotation.Beans;
+import com.doyutu.springbootaop.fremework.annotation.Component;
 
 /**
  * @author doyutu
@@ -9,6 +10,6 @@ import com.doyutu.springbootaop.fremework.annotation.Beans;
  */
 public class AopContainer {
 
-    public static final Class<?> [] beanContainer = new Class[]{Beans.class};
+    public static final Class<?> [] beanContainer = new Class[]{Beans.class, Component.class};
 
 }

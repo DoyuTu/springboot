@@ -1,9 +1,6 @@
 package com.doyutu.springbootaop.fremework.annotation;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 /**
  * @author doyutu
@@ -14,5 +11,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Around {
 
-    Class<?> [] value() default {};
+    Class<? extends Annotation> [] value() default {};
 }

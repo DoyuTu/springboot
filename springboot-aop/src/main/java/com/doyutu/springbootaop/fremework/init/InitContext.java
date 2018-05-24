@@ -7,6 +7,7 @@ import com.doyutu.springbootaop.fremework.container.AspectContainer;
 import com.doyutu.springbootaop.fremework.container.BeanContainer;
 import com.doyutu.springbootaop.fremework.container.ContextContainer;
 import com.doyutu.springbootaop.fremework.container.FieldContainer;
+import com.doyutu.springbootaop.fremework.entity.AspectEntity;
 import com.doyutu.springbootaop.fremework.point.AspectPoint;
 import com.doyutu.springbootaop.fremework.proxy.CglibProxy;
 import com.doyutu.springbootaop.fremework.util.ClassUtil;
@@ -35,7 +36,9 @@ public class InitContext {
     /**
      * key拦截方法，value拦截器的方法
      */
-    public static final Map<String, AspectPoint> INTERCEPT_MAP = new ConcurrentHashMap<>();
+    public static final Map<String, List<AspectEntity>> INTERCEPT_MAP = new ConcurrentHashMap<>();
+
+    public static final Map<Method, AspectPoint> METHOD_INTERCEPT_MAP = new ConcurrentHashMap<>();
 
     public static void init(String [] paths) {
         Set<Class<?>> cls = new HashSet<>();
@@ -62,15 +65,19 @@ public class InitContext {
                             if (annotation == null) {
                                 continue;
                             }
-                            String name = annotation.annotationType().getName();
-                            Set<Method> methods = AspectContainer.aspectMap.get(name);
-                            if (methods == null || methods.size() == 0) {
+                            Class<? extends Annotation> aClass = annotation.annotationType();
+                            Method methods = AspectContainer.aspectMap.get(aClass);
+                            if (methods == null) {
                                 continue;
                             }
-                            List<Method> o = new ArrayList<>(methods);
-                            AspectPoint point = new AspectPoint();
-                            loadAspectPoint(point, o, method);
-                            INTERCEPT_MAP.put(c.getKey().getName(), point);
+                            AspectEntity entity = new AspectEntity();
+                            entity.setAnnotationClass(aClass);
+                            entity.setAspectInvokeMethod(methods);
+                            if (INTERCEPT_MAP.containsKey(c.getKey().getName())) {
+                                INTERCEPT_MAP.get(c.getKey().getName()).add(entity);
+                            } else {
+                                INTERCEPT_MAP.put(c.getKey().getName(), Collections.singletonList(entity));
+                            }
                             Object proxy = InitContext.proxy.getProxy(c.getKey());
                             BeanContainer.putBean(c.getKey().getName(), proxy);
                         }
@@ -103,21 +110,13 @@ public class InitContext {
                         if (around == null) {
                             continue;
                         }
-                        String name;
-                        Class<?> [] value = around.value();
-                        for (Class<?> ar : value) {
+                        Class<? extends Annotation> [] value = around.value();
+                        for (Class<? extends Annotation> ar : value) {
                             if (ar == null) {
                                 continue;
                             }
-                            name = ar.getName();
-                            Set<Method> methods = AspectContainer.aspectMap.get(name);
-                            if (methods != null) {
-                                methods.add(method);
-                            } else {
-                                AspectContainer.aspectMap.put(name, Collections.singleton(method));
-                            }
+                            AspectContainer.aspectMap.put(ar, method);
                         }
-
                     }
                 });
     }
@@ -129,9 +128,10 @@ public class InitContext {
         cls.parallelStream().filter(k -> k.isAnnotationPresent(Component.class)).forEach(k -> {
             String clsName = k.getName().substring(k.getName().lastIndexOf(".") + 1);
             //bean ID
-            String beanId = String.valueOf(clsName.charAt(0)).toLowerCase() + clsName.substring(1);
+            //String beanId = String.valueOf(clsName.charAt(0)).toLowerCase() + clsName.substring(1);
             try {
                 ContextContainer.putContext(k, k.newInstance());
+                BeanContainer.putBean(k.getName(), k.newInstance());
             } catch (InstantiationException | IllegalAccessException e) {
                 e.printStackTrace();
             }
@@ -156,8 +156,10 @@ public class InitContext {
                                 if (Objects.isNull(bean)) {
                                     throw new RuntimeException("找不到的Bean：" + name);
                                 }
-                                field.set(v,bean);
-                                FieldContainer.putContent(field.getName(), field.get(k));
+                                Object beanName = BeanContainer.getBean(k);
+                                field.set(beanName,bean);
+                                Object o = field.get(beanName);
+                                FieldContainer.putContent(k.getName() + "." + field.getName(), o);
                             } catch (IllegalAccessException e) {
                                 e.printStackTrace();
                             }

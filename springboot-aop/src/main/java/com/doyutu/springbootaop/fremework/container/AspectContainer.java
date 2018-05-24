@@ -1,8 +1,8 @@
 package com.doyutu.springbootaop.fremework.container;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * springboot
  */
 public class AspectContainer {
-
-    public static final Map<String, Set<Method>> aspectMap = new ConcurrentHashMap<>();
+    /** key 拦截注解 value 拦截器方法 **/
+    public static final Map<Class<? extends Annotation>, Method> aspectMap = new ConcurrentHashMap<>();
 
 }

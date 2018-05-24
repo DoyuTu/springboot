@@ -16,8 +16,6 @@ public class LogAspect {
     @Around(LogHead.class)
     public Object invokePoint(AspectPoint wrapper) throws Throwable {
         System.out.println("LogAspect exec");
-
-
         return wrapper.invoke();
     }
 }

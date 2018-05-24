@@ -44,7 +44,7 @@ public class BeanContainer {
         return (T) beanMap.get(beanName);
     }
 
-    public static String getBeanName(Class<?> cls) {
+    private static String getBeanName(Class<?> cls) {
         for (Class annotationCls : AopContainer.beanContainer) {
             Annotation annotation = cls.getAnnotation(annotationCls);
             if (annotation == null) {
@@ -56,7 +56,7 @@ public class BeanContainer {
             }
             return cls.getName();
         }
-        return null;
+        throw new RuntimeException("找不到Bean：" + cls.getName());
     }
 
 }
