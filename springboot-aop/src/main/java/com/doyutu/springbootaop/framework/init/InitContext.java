@@ -1,17 +1,16 @@
-package com.doyutu.springbootaop.fremework.init;
+package com.doyutu.springbootaop.framework.init;
 
-import com.doyutu.springbootaop.fremework.annotation.Around;
-import com.doyutu.springbootaop.fremework.annotation.Component;
-import com.doyutu.springbootaop.fremework.annotation.Inject;
-import com.doyutu.springbootaop.fremework.container.AspectContainer;
-import com.doyutu.springbootaop.fremework.container.BeanContainer;
-import com.doyutu.springbootaop.fremework.container.ContextContainer;
-import com.doyutu.springbootaop.fremework.container.FieldContainer;
-import com.doyutu.springbootaop.fremework.entity.AspectEntity;
-import com.doyutu.springbootaop.fremework.point.AspectPoint;
-import com.doyutu.springbootaop.fremework.proxy.CglibProxy;
-import com.doyutu.springbootaop.fremework.util.ClassUtil;
-import com.doyutu.springbootaop.service.AopService;
+import com.doyutu.springbootaop.framework.annotation.Around;
+import com.doyutu.springbootaop.framework.annotation.Component;
+import com.doyutu.springbootaop.framework.annotation.Inject;
+import com.doyutu.springbootaop.framework.container.AspectContainer;
+import com.doyutu.springbootaop.framework.container.BeanContainer;
+import com.doyutu.springbootaop.framework.container.ContextContainer;
+import com.doyutu.springbootaop.framework.container.FieldContainer;
+import com.doyutu.springbootaop.framework.entity.AspectEntity;
+import com.doyutu.springbootaop.framework.point.AspectPoint;
+import com.doyutu.springbootaop.framework.proxy.CglibProxy;
+import com.doyutu.springbootaop.framework.util.ClassUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.CollectionUtils;
 
@@ -42,7 +41,9 @@ public class InitContext {
 
     public static void init(String [] paths) {
         Set<Class<?>> cls = new HashSet<>();
-        Arrays.stream(paths).forEach((String c) -> cls.addAll(ClassUtil.getClasses(c)));
+        List<String> list = new ArrayList<>(Arrays.asList(paths));
+        list.add("com.doyutu.springbootaop.framework");
+        list.parallelStream().forEach((String c) -> cls.addAll(ClassUtil.getClasses(c)));
         if (CollectionUtils.isEmpty(cls)) {
             return;
         }
@@ -83,21 +84,6 @@ public class InitContext {
                         }
                     }
                 });
-    }
-
-    private static void loadAspectPoint(AspectPoint point ,List<Method> methods, Method m) {
-        if (CollectionUtils.isEmpty(methods)) {
-            return;
-        }
-        Method aspectMethod = methods.get(0);
-        point.setAspectMethod(aspectMethod);
-        point.setAspectBean(aspectMethod.getDeclaringClass());
-        point.setClazz(m.getDeclaringClass());
-        methods.remove(0);
-        if (CollectionUtils.isEmpty(methods)) {
-            point.setChildPoint(null);
-        }
-        loadAspectPoint(point, methods, m);
     }
 
     private static void initAspect() {
@@ -153,9 +139,6 @@ public class InitContext {
                                 //属性注入
                                 String name = type.getName();
                                 Object bean = BeanContainer.getBean(name);
-                                if (Objects.isNull(bean)) {
-                                    throw new RuntimeException("找不到的Bean：" + name);
-                                }
                                 Object beanName = BeanContainer.getBean(k);
                                 field.set(beanName,bean);
                                 Object o = field.get(beanName);
@@ -166,12 +149,5 @@ public class InitContext {
                         }
                     }
                 });
-    }
-
-    public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException {
-        Class<?> cls = Class.forName("com.doyutu.springbootaop.service.AopService");
-        AopService o = (AopService) cls.newInstance();
-        System.out.println(o.getAop());
-
     }
 }

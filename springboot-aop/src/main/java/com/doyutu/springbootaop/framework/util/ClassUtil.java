@@ -1,4 +1,4 @@
-package com.doyutu.springbootaop.fremework.util;
+package com.doyutu.springbootaop.framework.util;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,6 +1,6 @@
-package com.doyutu.springbootaop.fremework.servlet;
+package com.doyutu.springbootaop.framework.servlet;
 
-import com.doyutu.springbootaop.fremework.init.InitContext;
+import com.doyutu.springbootaop.framework.init.InitContext;
 import com.google.common.base.Strings;
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,7 +27,7 @@ public class AopServlet implements ServletContextListener {
             log.warn("启动参数scanPath为空");
             return;
         }
-        String[] paths = path.split(",");
+        String[] paths = path.split("[,，]");
         InitContext.init(paths);
     }
 

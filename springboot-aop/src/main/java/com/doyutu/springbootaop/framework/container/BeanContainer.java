@@ -1,4 +1,4 @@
-package com.doyutu.springbootaop.fremework.container;
+package com.doyutu.springbootaop.framework.container;
 
 import com.google.common.base.Strings;
 import lombok.Getter;
@@ -32,14 +32,14 @@ public class BeanContainer {
     public static <T> T getBean(Class<?> cls) {
         String beanName = getBeanName(cls);
         if (Strings.isNullOrEmpty(beanName)) {
-            return null;
+            throw new RuntimeException("找不到Bean：" + cls.getName());
         }
         return (T) beanMap.get(beanName);
     }
 
     public static <T> T getBean(String beanName) {
         if (Strings.isNullOrEmpty(beanName)) {
-            return null;
+            throw new RuntimeException("找不到Bean：" + beanName);
         }
         return (T) beanMap.get(beanName);
     }

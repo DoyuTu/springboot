@@ -1,4 +1,4 @@
-package com.doyutu.springbootaop.fremework.point;
+package com.doyutu.springbootaop.framework.point;
 
 import lombok.Data;
 import org.springframework.cglib.proxy.MethodProxy;

@@ -1,7 +1,7 @@
 package com.doyutu.springbootaop.web.controller;
 
-import com.doyutu.springbootaop.fremework.annotation.Component;
-import com.doyutu.springbootaop.fremework.annotation.Inject;
+import com.doyutu.springbootaop.framework.annotation.Component;
+import com.doyutu.springbootaop.framework.annotation.Inject;
 import com.doyutu.springbootaop.service.AopService;
 
 /**

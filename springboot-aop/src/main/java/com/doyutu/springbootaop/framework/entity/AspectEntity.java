@@ -1,4 +1,4 @@
-package com.doyutu.springbootaop.fremework.entity;
+package com.doyutu.springbootaop.framework.entity;
 
 import lombok.Data;
 

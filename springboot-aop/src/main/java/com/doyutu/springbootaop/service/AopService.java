@@ -1,8 +1,8 @@
 package com.doyutu.springbootaop.service;
 
 
-import com.doyutu.springbootaop.fremework.annotation.Component;
-import com.doyutu.springbootaop.fremework.annotation.LogHead;
+import com.doyutu.springbootaop.framework.annotation.Component;
+import com.doyutu.springbootaop.framework.annotation.LogHead;
 
 /**
  * @author doyutu
