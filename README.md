@@ -28,7 +28,8 @@
 | springboot-MybatisPlus | MybatisPlus 简单使用 |
 | springboot-Netty | Netty 服务端与客户端NIO 简单使用 |
 | springboot-WebSocket | Netty 服务端与HTML页面 简单交互 & Spring WebSocket & Spring SockJS & Spring STOMP |
-| springboot-aop| AOP与DI简单实现(Log4j2) |
+| springboot-aop| AOP与DI简单实现 |
+| springboot-docker| SpringBoot在Tomcat镜像war包方式构建Docker项目 |
 
 ---
 

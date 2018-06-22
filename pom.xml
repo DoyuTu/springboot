@@ -36,6 +36,7 @@
         <module>springboot-netty</module>
         <module>springboot-websocket</module>
         <module>springboot-aop</module>
+        <module>springboot-docker</module>
     </modules>
 
     <parent>
